@@ -1,0 +1,158 @@
+@import "../config";
+
+@mixin position(
+  $position,
+  $top: null,
+  $right: null,
+  $bottom: null,
+  $left: null,
+  $cover: false,
+  $center: false,
+  $align: null
+) {
+  position: $position;
+
+  @if $center {
+    @include set-prefix(transform, translate(-50%, -50%));
+    top: 50%;
+    left: 50%;
+  } @else {
+    top: if($cover, 0, $top);
+    right: if($cover, 0, $right);
+    bottom: if($cover, 0, $bottom);
+    left: if($cover, 0, $left);
+  }
+
+  @if $align == "vertical" {
+    @include set-prefix(transform, translateY(-50%));
+  } @else if $align == "horizontal" {
+    @include set-prefix(transform, translateX(-50%));
+  } @else if $align == "both" {
+    @include set-prefix(transform, translate(-50%, -50%));
+  }
+}
+
+@mixin pseudos {
+  content: "";
+  display: block;
+}
+
+@mixin button-clean-up {
+  outline: none;
+  cursor: pointer;
+}
+
+@mixin positionAbsolute($args...) {
+  @include position(absolute, $args...);
+}
+
+@mixin positionRelative($args...) {
+  @include position(relative, $args...);
+}
+
+@mixin positionFixed($args...) {
+  @include position(fixed, $args...);
+}
+
+@mixin transition($props...) {
+  @include set-prefix(transition, $props);
+}
+
+@mixin transform($method) {
+  @include set-prefix(transform, $method);
+}
+
+@mixin border-radius($amount) {
+  -webkit-border-radius: $amount;
+  -moz-border-radius: $amount;
+  border-radius: $amount;
+}
+
+@mixin background-gradient(
+  $start-color: null,
+  $end-color: null,
+  $orientation: null
+) {
+  background: $start-color;
+
+  @if $orientation == "horizontal" {
+    background: -webkit-linear-gradient(left, $start-color, $end-color);
+    background: linear-gradient(to right, $start-color, $end-color);
+  } @else if $orientation == "radial" {
+    background: -webkit-radial-gradient(
+      center,
+      ellipse cover,
+      $start-color,
+      $end-color
+    );
+    background: radial-gradient(ellipse at center, $start-color, $end-color);
+  } @else {
+    background: -webkit-linear-gradient(top, $start-color, $end-color);
+    background: linear-gradient(to bottom, $start-color, $end-color);
+  }
+}
+
+@mixin background-size($background-size) {
+  @include set-prefix(background-size, $background-size);
+}
+
+@mixin vertical-center {
+  @include transform(translateY(-50%));
+  position: relative;
+  top: 50%;
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+@mixin calculate-line-height($number) {
+  line-height: #{$number * map_get($config, "base-line-height") + "rem"};
+}
+
+@mixin calculate-margin-bottom($number, $method: null) {
+  @if $method == "px" {
+    margin-bottom: #{$number * map_get($config, "grid-base") + "px"};
+  } @else {
+    margin-bottom: #{$number * map_get($config, "base-line-height") + "rem"};
+  }
+}
+
+@mixin set-z-index($level) {
+  z-index: map_get($z-index, $level);
+}
+
+@mixin set-prefix($property, $value, $vendors: webkit moz ms o) {
+  @if $vendors {
+    @each $vendor in $vendors {
+      #{"-" + $vendor + "-" + $property}: #{$value};
+    }
+  }
+  #{$property}: #{$value};
+}
+
+@mixin sofia-pro-medium {
+  font-family: "Sofia Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@mixin sofia-pro-black {
+  font-family: "Sofia Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}

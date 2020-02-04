@@ -1,0 +1,55 @@
+// maps
+$config: (
+  "base-font-size": 16px,
+  "base-font-size-em": 1em,
+  "base-line-height": 1.5,
+  "grid-base": 8
+);
+
+$z-index: (
+  "modal-content": 120,
+  "modal-overlay": 110,
+  "super-navigation": 115,
+  "navigation": 100,
+  "sub-navigation": 90,
+  "super-content": 80,
+  "content": 5,
+  "sub-content": 1,
+  "body-backgrounds": -1
+);
+
+// default colors
+$color-razzmatazz-pink: #dd2968;
+$color-maximum-red: #d81c1c;
+$color-badlands-orange: #fc6114;
+$color-marigold-yellow: #ffc107;
+$color-dragonscale-green: #00a878;
+$color-sea-green: #12b7b2;
+$color-celestial-blue: #2280d6;
+$color-vega-violet: #b74cfb;
+$color-indigo: #6610f2;
+$color-charcoal: #3f5068;
+$color-vader-black: #0c090d;
+$color-off-white: #fbf9ff;
+$color-facebook: #3b5998;
+$color-twitter: #1da1f2;
+$color-spotify: #1db954;
+
+$color-interval: 10%; // for the color-palette
+
+// bulma variable overrides
+$tablet: 768px;
+$primary: $color-celestial-blue;
+$link: $color-celestial-blue;
+$success: $color-dragonscale-green;
+$warning: $color-marigold-yellow;
+$danger: $color-maximum-red;
+
+// helpers
+$sidebar-width-large: 360px;
+$sidebar-width-medium: 256px;
+
+// bulma utlity variables
+@import "~bulma/sass/utilities/initial-variables";
+@import "~bulma/sass/utilities/functions";
+@import "~bulma/sass/utilities/derived-variables";

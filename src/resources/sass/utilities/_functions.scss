@@ -1,0 +1,25 @@
+@import "../config";
+
+@function color-shader($color-name: $color-charcoal, $level: 0) {
+  $color: $color-name;
+  $color-base: if($level < 0, black, white);
+  $mix-level: if($level < 0, ($level * -1), $level);
+
+  @return mix($color-base, $color, $mix-level * $color-interval);
+}
+
+@function v-rhythm($multiplier, $method: null) {
+  @if $method == "px" {
+    @return #{$multiplier * map_get($config, "grid-base") + "px"};
+  } @else {
+    @return #{$multiplier * map_get($config, "base-line-height") + "rem"};
+  }
+}
+
+@function set-button-text-color($color) {
+  @if (lightness($color) > 40) {
+    @return rgba($color-vader-black, 0.75);
+  } @else {
+    @return rgba($color-off-white, 0.75);
+  }
+}
