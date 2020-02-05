@@ -1,0 +1,7 @@
+@import "../utilities/all";
+
+.preloader-overlay {
+  @include positionFixed($cover: true);
+  @include set-z-index("modal-overlay");
+  background: $color-deep-purple;
+}

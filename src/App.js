@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import FontFaceObserver from "fontfaceobserver";
-import logo from "./logo.svg";
 import "./resources/sass/base.scss";
 import "./resources/sass/app.scss";
 
@@ -8,7 +7,8 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fontIsLoading: true
+      fontIsLoading: true,
+      imagesLoaded: false
     };
 
     Promise.all([new FontFaceObserver("sofia-pro").load()]).then(
@@ -21,26 +21,39 @@ export default class App extends Component {
         this.setState({ fontIsLoading: false });
       }
     );
+
+    const preloadImages = [
+      require("./resources/img/alchemy-cover.jpg"),
+      require("./resources/img/punkgoes-cover.jpg"),
+      require("./resources/img/starset-cover.jpg"),
+      require("./resources/img/walaapp-cover.jpg")
+    ];
+    let imgLoadedCount = 0;
+    let imgCount = preloadImages.length;
+    preloadImages.forEach(url => {
+      let img = new Image();
+      img.src = url;
+      img.onload = () => {
+        imgLoadedCount++;
+        console.log("Number of loaded images: " + imgLoadedCount);
+        if (imgLoadedCount == imgCount) {
+          console.log("ollo");
+          this.setState({
+            imagesLoaded: true
+          });
+        }
+      };
+    });
   }
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <>
+        {!this.state.imagesLoaded && <div className="preloader-overlay"></div>}
+        <div className="projectHeroImages">
+          <div className="projectHeroImages__heroImage"></div>
+        </div>
+      </>
     );
   }
 }
