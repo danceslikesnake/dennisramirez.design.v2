@@ -77,7 +77,7 @@ export default class App extends Component {
         <div className="gridLines -inner" />
         <nav className="mainNavigation">
           <div className="container">
-            <ul className="level">
+            <ul className="level is-mobile">
               <li className="level-left">
                 <div className="level-item">
                   <span className="mainNavigation__myName">Dennis Ramirez</span>

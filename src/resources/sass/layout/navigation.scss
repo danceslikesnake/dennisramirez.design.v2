@@ -13,11 +13,18 @@
   &__myName {
     @include sofia-pro-black;
     color: white;
-    font-size: type-scale(2);
+    font-size: type-scale(1, $dense-font-size);
+    @include media_queries($desktop) {
+      font-size: type-scale(2);
+    }
   }
 
   &__menuButtonImg {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
+    @include media_queries($desktop) {
+      width: 32px;
+      height: 32px;
+    }
   }
 }
