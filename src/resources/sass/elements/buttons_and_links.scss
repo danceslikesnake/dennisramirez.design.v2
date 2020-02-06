@@ -8,12 +8,12 @@
   outline: none;
   background: $color-razzmatazz-pink;
   width: 100%;
-  line-height: v-rhythm(9, "px");
-  font-size: type-scale(1);
+  line-height: v-rhythm(7, "px");
   color: white;
   text-transform: uppercase;
   padding: 0 v-rhythm(3, "px");
   position: relative;
+  font-size: type-scale(0);
   letter-spacing: -0.79px;
   &:before {
     @include transition(all 0.2s ease);
@@ -30,6 +30,10 @@
       width: calc(100% - 16px);
       opacity: 1;
     }
+  }
+  @include media_queries($desktop) {
+    font-size: type-scale(1);
+    line-height: v-rhythm(9, "px");
   }
 
   &__icon {
