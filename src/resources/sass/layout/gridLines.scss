@@ -1,0 +1,35 @@
+@import "../utilities/all";
+
+.gridLines {
+  @include positionFixed($top: 0, $bottom: 0);
+  border-left: 1px solid rgba(white, 0.1);
+  border-right: 1px solid rgba(white, 0.1);
+
+  &.-outer {
+    left: 16px;
+    right: 16px;
+    @include media_queries($tablet) {
+      left: 24px;
+      right: 24px;
+    }
+  }
+
+  &.-inner {
+    display: none;
+    @include media_queries($desktop) {
+      @include transform(translateX(-50%));
+      left: 50%;
+      display: block;
+      width: 960px;
+    }
+    @include media_queries($widescreen) {
+      width: 1152px;
+    }
+    @include media_queries($fullhd) {
+      width: 1344px;
+    }
+    @include media_queries(1920px) {
+      width: 1536px;
+    }
+  }
+}

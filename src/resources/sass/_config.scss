@@ -3,6 +3,7 @@ $config: (
   "base-font-size": 16px,
   "base-font-size-em": 1em,
   "base-line-height": 1.5,
+  "dense-font-size": 14px,
   "grid-base": 8
 );
 
@@ -19,7 +20,7 @@ $z-index: (
 );
 
 // default colors
-$color-razzmatazz-pink: #dd2968;
+$color-razzmatazz-pink: #ff0073;
 $color-maximum-red: #d81c1c;
 $color-badlands-orange: #fc6114;
 $color-marigold-yellow: #ffc107;
@@ -46,11 +47,10 @@ $warning: $color-marigold-yellow;
 $danger: $color-maximum-red;
 
 // custom colors
-$color-deep-purple: #361134;
+$color-deep-purple: #49063d;
 
 // helpers
-$sidebar-width-large: 360px;
-$sidebar-width-medium: 256px;
+$dense-font-size: map_get($config, "dense-font-size");
 
 // bulma utlity variables
 @import "~bulma/sass/utilities/initial-variables";

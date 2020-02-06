@@ -1,1 +1,23 @@
 @import "../utilities/all";
+
+.mainNavigation {
+  @include positionFixed($top: 72px, $left: 50%, $align: "horizontal");
+  @include set-z-index("navigation");
+  width: 100%;
+  @include media_queries(1920px) {
+    .container {
+      max-width: 1536px;
+    }
+  }
+
+  &__myName {
+    @include sofia-pro-black;
+    color: white;
+    font-size: type-scale(2);
+  }
+
+  &__menuButtonImg {
+    width: 32px;
+    height: 32px;
+  }
+}

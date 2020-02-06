@@ -1,0 +1,53 @@
+@import "../utilities/all";
+
+.projectHero {
+  @include positionFixed();
+  @include background-size("cover");
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  &__contentWrapper {
+    @include set-z-index("content");
+    position: relative;
+    height: 100%;
+  }
+
+  &__content {
+    @include positionAbsolute($bottom: 72px, $left: 50%, $align: "horizontal");
+    width: 100%;
+    @include media_queries(1920px) {
+      .container {
+        max-width: 1536px;
+      }
+    }
+  }
+
+  &__homeHeadline {
+    @include sofia-pro-black;
+    @include calculate-line-height(1.666666666666);
+    font-size: type-scale(2, $dense-font-size);
+    color: rgba(white, 0.25);
+    margin-bottom: v-rhythm(5, "px");
+    letter-spacing: -1.05px;
+    @include media_queries($desktop) {
+      @include calculate-line-height(4);
+      font-size: type-scale(6, $dense-font-size);
+      letter-spacing: -2.96px;
+    }
+
+    strong {
+      color: rgba(white, 1);
+    }
+  }
+
+  &__actions {
+    .level-item {
+      flex: 1;
+    }
+    .level-item:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+}

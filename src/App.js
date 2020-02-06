@@ -3,29 +3,30 @@ import FontFaceObserver from "fontfaceobserver";
 import "./resources/sass/base.scss";
 import "./resources/sass/app.scss";
 
+import { projects } from "./resources/data/projects";
+
+import ProjectHero from "./components/ProjectHero/index";
+import HomeHero from "./components/HomeHero";
+
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       fontIsLoading: true,
-      imgsToLoad: [
-        require("./resources/img/alchemy-cover.jpg"),
-        require("./resources/img/punkgoes-cover.jpg"),
-        require("./resources/img/starset-cover.jpg"),
-        require("./resources/img/walaapp-cover.jpg")
-      ],
-      projects: [
-        { key: "punkgoes" },
-        { key: "walaapp" },
-        { key: "alchemy" },
-        { key: "starset" }
-      ],
-      imagesLoaded: false
+      projects: projects,
+      imagesLoaded: false,
+      activeProjectIndex: 0
     };
 
-    // preliminary checks
+    // check that fonts are loaded
     this.fontObserver();
-    this.preloadImages(this.state.imgsToLoad);
+    // preload images
+    let imgsToLoad = [require("./resources/img/nav-menu-btn.svg")];
+    this.state.projects.forEach((project, idx) => {
+      if (project.heroImage) imgsToLoad.push(project.heroImage);
+      if (project.heroIcon) imgsToLoad.push(project.heroIcon);
+    });
+    this.preloadImages(imgsToLoad);
   }
 
   fontObserver = () => {
@@ -58,25 +59,48 @@ export default class App extends Component {
     });
   };
 
+  tempAdvance = () => {
+    this.setState({ activeProjectIndex: 1 });
+  };
+
   render() {
+    const { projects, activeProjectIndex } = this.state;
+    const activeProject = projects[activeProjectIndex];
     return (
       <>
         {!this.state.imagesLoaded && (
           <div className="preloader-overlay">
-            <i className="far fa-spinner fa-spin"></i>
+            <i className="far fa-spinner fa-spin" />
           </div>
         )}
-        <div className="projectHeroImages">
-          {this.state.imgsToLoad.map((imgKey, idx) => {
-            return (
-              <div
-                key={idx}
-                className="projectHeroImages__image"
-                style={{ backgroundImage: `url(${imgKey})` }}
-              />
-            );
-          })}
-        </div>
+        <div className="gridLines -outer" />
+        <div className="gridLines -inner" />
+        <nav className="mainNavigation">
+          <div className="container">
+            <ul className="level">
+              <li className="level-left">
+                <div className="level-item">
+                  <span className="mainNavigation__myName">Dennis Ramirez</span>
+                </div>
+              </li>
+              <li className="level-right">
+                <div className="level-item">
+                  <button type="button" className="mainNavigation__menuButton">
+                    <img
+                      src={require("./resources/img/nav-menu-btn.svg")}
+                      className="mainNavigation__menuButtonImg"
+                    />
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        {activeProject.id == "home" ? (
+          <HomeHero project={activeProject} tempAdvance={this.tempAdvance} />
+        ) : (
+          <ProjectHero project={activeProject} />
+        )}
       </>
     );
   }

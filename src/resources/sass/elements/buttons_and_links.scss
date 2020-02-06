@@ -1,0 +1,65 @@
+@import "../utilities/all";
+
+.callToAction {
+  @include set-prefix(box-shadow, inset 0px 0px 0px 8px rgba(black, 0.3));
+  @include sofia-pro-black;
+  @include transition(background 0.3s);
+  display: block;
+  outline: none;
+  background: $color-razzmatazz-pink;
+  width: 100%;
+  line-height: v-rhythm(9, "px");
+  font-size: type-scale(1);
+  color: white;
+  text-transform: uppercase;
+  padding: 0 v-rhythm(3, "px");
+  position: relative;
+  letter-spacing: -0.79px;
+  &:before {
+    @include transition(all 0.2s ease);
+    @include positionAbsolute($top: 8px, $left: 8px);
+    @include pseudos;
+    width: 56px;
+    height: 56px;
+    background: rgba(black, 0.3);
+    opacity: 0;
+  }
+  &:hover {
+    color: white;
+    &:before {
+      width: calc(100% - 16px);
+      opacity: 1;
+    }
+  }
+
+  &__icon {
+    @include positionAbsolute($right: v-rhythm(3, "px"), $top: 0);
+  }
+
+  &.-is-button {
+    border: none;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  &.-is-secondary {
+    @include set-prefix(box-shadow, none);
+    background: rgba($color-razzmatazz-pink, 0.25);
+    &:hover {
+      color: white;
+    }
+  }
+
+  span {
+    position: relative;
+  }
+}
+
+.mainNavigation {
+  &__menuButton {
+    @include button-clean-up;
+    background: none;
+    border: none;
+    padding: 16px;
+  }
+}
