@@ -2,8 +2,15 @@
 
 .gridLines {
   @include positionFixed($top: 0, $bottom: 0);
-  border-left: 1px solid rgba(white, 0.1);
-  border-right: 1px solid rgba(white, 0.1);
+  @include set-z-index("sub-navigation");
+  pointer-events: none;
+  border-left: 1px solid rgba(white, 0.15);
+  border-right: 1px solid rgba(white, 0.15);
+
+  &.-center {
+    border-right: none;
+    left: 50%;
+  }
 
   &.-outer {
     left: 16px;

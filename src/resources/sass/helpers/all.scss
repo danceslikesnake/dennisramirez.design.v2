@@ -1,1 +1,7 @@
 @import "../utilities/all";
+
+.-expanded {
+  @include media_queries(1920px) {
+    max-width: 1536px;
+  }
+}

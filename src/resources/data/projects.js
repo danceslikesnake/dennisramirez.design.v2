@@ -8,6 +8,7 @@ export const projects = [
     id: "punkgoes",
     heroImage: require("../img/punkgoes-cover.jpg"),
     heroIcon: require("../img/punkgoes-logo.svg"),
+    heroIconBlack: require("../img/punkgoes-logo-black.svg"),
     projectName: "Punk Goes MySpace",
     heroSkillSet: "Website, CMS"
   },
@@ -15,6 +16,7 @@ export const projects = [
     id: "starsetonline",
     heroImage: require("../img/starsetonline-cover.jpg"),
     heroIcon: require("../img/starsetonline-logo.svg"),
+    heroIconBlack: require("../img/starsetonline-logo-black.svg"),
     projectName: "Starset Online",
     heroSkillSet: "Website, UX"
   },
@@ -22,6 +24,7 @@ export const projects = [
     id: "alchemyui",
     heroImage: require("../img/alchemyui-cover.jpg"),
     heroIcon: require("../img/alchemyui-logo.svg"),
+    heroIconBlack: require("../img/alchemyui-logo-black.svg"),
     projectName: "Alchemy UI Kit",
     heroSkillSet: "UI, UX"
   }

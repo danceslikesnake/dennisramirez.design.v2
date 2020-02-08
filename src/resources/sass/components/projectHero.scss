@@ -2,35 +2,30 @@
 
 .projectHero {
   @include positionFixed();
-  @include background-size("cover");
   width: 100%;
   height: 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
 
   &__contentWrapper {
-    @include set-z-index("content");
+    @include background-size("cover");
     position: relative;
     height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
   }
 
   &__content {
     @include positionAbsolute($bottom: 72px, $left: 50%, $align: "horizontal");
     width: 100%;
-    @include media_queries(1920px) {
-      .container {
-        max-width: 1536px;
-      }
-    }
   }
 
   &__homeHeadline {
     @include sofia-pro-black;
     @include calculate-line-height(1.666666666666);
     font-size: type-scale(2, $dense-font-size);
-    color: rgba(white, 0.25);
+    color: rgba(white, 0.33);
     margin-bottom: v-rhythm(5, "px");
     letter-spacing: -1.05px;
+    padding: 0 24px;
     @include media_queries($desktop) {
       @include calculate-line-height(4);
       font-size: type-scale(6, $dense-font-size);
@@ -42,12 +37,57 @@
     }
   }
 
-  &__actions {
-    .level-item {
+  &__homeActions {
+    &.is-mobile .level-item {
       flex: 1;
     }
-    .level-item:not(:last-child) {
-      margin-right: 8px;
+  }
+
+  &__headlineWrapper {
+    @include positionAbsolute($bottom: 152px);
+    width: 100%;
+    mix-blend-mode: screen;
+  }
+
+  &__headline {
+    @include sofia-pro-black;
+    font-size: type-scale(6, $dense-font-size);
+    background: white;
+    letter-spacing: -2.96px;
+    padding: 50px 24px 0 24px;
+    height: 136px;
+    position: relative;
+    color: black;
+  }
+
+  &__headlineIcon {
+    @include positionAbsolute($right: 24px, $top: 50%, $align: "vertical");
+    width: 120px;
+  }
+
+  &__actions {
+    @include positionAbsolute($bottom: 72px);
+    width: 100%;
+  }
+
+  &__action {
+    width: calc(50% - 4px);
+    &.-skillSet {
+      background: white;
+      color: black;
+      line-height: 72px;
+      font-size: type-scale(1);
+      padding: 0 24px;
+      mix-blend-mode: screen;
+      letter-spacing: -0.79px;
+
+      strong {
+        @include sofia-pro-black;
+        text-transform: uppercase;
+      }
+    }
+    &.-rightAlign {
+      margin-left: auto;
     }
   }
 }

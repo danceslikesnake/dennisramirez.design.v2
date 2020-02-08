@@ -1,32 +1,44 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import CallToAction from "../shared/CallToAction";
 
 class ProjectHero extends Component {
   render() {
     const { project } = this.props;
     return (
-      <div
-        className="projectHero"
-        style={{ backgroundImage: `url(${project.heroImage})` }}
-      >
-        <div className="projectHero__contentWrapper">
-          <div className="projectHero__content">
-            <div className="level is-mobile">
-              <div className="level-left">
-                <div className="level-item">
-                  <h1>{project.projectName}</h1>
-                </div>
-              </div>
-              <div className="level-right">
-                <div className="level-item">icon</div>
+      <div className="projectHero">
+        <div
+          className="projectHero__contentWrapper"
+          style={{ backgroundImage: `url(${project.heroImage})` }}
+        >
+          <div className="projectHero__headlineWrapper">
+            <div className="container -expanded">
+              <h1 className="projectHero__headline">
+                {project.projectName}
+                <img
+                  src={project.heroIconBlack}
+                  className="projectHero__headlineIcon"
+                  alt={project.projectName + " logo"}
+                />
+              </h1>
+            </div>
+          </div>
+          <div className="projectHero__actions">
+            <div className="container -expanded">
+              <div className="projectHero__action -skillSet">
+                <strong>Skills: </strong>
+                {project.heroSkillSet}
               </div>
             </div>
-            <div className="level is-mobile">
-              <div className="level-left">
-                <div className="level-item">left action</div>
-              </div>
-              <div className="level-right">
-                <div className="level-item">right action</div>
+          </div>
+          <div className="projectHero__actions">
+            <div className="container -expanded">
+              <div className="projectHero__action -rightAlign">
+                <CallToAction
+                  ctaType="button"
+                  label="View Details"
+                  icon="far fa-envelope"
+                />
               </div>
             </div>
           </div>

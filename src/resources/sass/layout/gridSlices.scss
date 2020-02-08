@@ -1,0 +1,51 @@
+@import "../utilities/all";
+
+.gridSlices {
+  &__slice {
+    $middle-slice-width: 1536px;
+    $middle-slice-half: calc(1536px / 2);
+    $outer-slice-width: 24px;
+    $flanking-slice-width: calc(
+      (
+          100% - #{$outer-slice-width} - #{$outer-slice-width} - #{$middle-slice-width}
+        ) / 2
+    );
+
+    @include positionFixed($top: 0, $bottom: 0);
+    @include set-z-index("sub-navigation");
+    background: $color-razzmatazz-pink;
+    height: 100%;
+
+    &.-one {
+      left: 0;
+      width: $outer-slice-width;
+    }
+    &.-two {
+      left: 24px;
+      width: $flanking-slice-width;
+    }
+    &.-three {
+      left: calc(#{$outer-slice-width} + #{$flanking-slice-width});
+      width: #{$middle-slice-half};
+    }
+    &.-four {
+      left: calc(
+        #{$outer-slice-width} + #{$flanking-slice-width} + #{$middle-slice-half}
+      );
+      width: #{$middle-slice-half};
+    }
+    &.-five {
+      left: calc(
+        #{$outer-slice-width} + #{$flanking-slice-width} + #{$middle-slice-width}
+      );
+      width: $flanking-slice-width;
+    }
+    &.-six {
+      left: calc(
+        #{$outer-slice-width} + #{$flanking-slice-width} + #{$middle-slice-width} +
+          #{$flanking-slice-width}
+      );
+      width: $outer-slice-width;
+    }
+  }
+}

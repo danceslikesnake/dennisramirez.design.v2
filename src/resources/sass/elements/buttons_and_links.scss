@@ -38,6 +38,7 @@
 
   &__icon {
     @include positionAbsolute($right: v-rhythm(3, "px"), $top: 0);
+    font-size: type-scale(1);
   }
 
   &.-is-button {
@@ -48,7 +49,7 @@
 
   &.-is-secondary {
     @include set-prefix(box-shadow, none);
-    background: rgba($color-razzmatazz-pink, 0.25);
+    background: rgb(146, 0, 80);
     &:hover {
       color: white;
     }
@@ -64,6 +65,6 @@
     @include button-clean-up;
     background: none;
     border: none;
-    padding: 16px;
+    padding: 24px;
   }
 }

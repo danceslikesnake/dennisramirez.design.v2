@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 class CallToAction extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {
       ctaType,
@@ -14,7 +10,8 @@ class CallToAction extends Component {
       onClick,
       href,
       newWindow,
-      icon
+      icon,
+      pauseHomeAnimation
     } = this.props;
     let classes = "callToAction";
     if (isSecondary) classes += " -is-secondary";
@@ -30,6 +27,20 @@ class CallToAction extends Component {
               onClick
                 ? () => {
                     onClick();
+                  }
+                : null
+            }
+            onMouseEnter={
+              pauseHomeAnimation
+                ? () => {
+                    //window.pauseLogoAnimation();
+                  }
+                : null
+            }
+            onMouseLeave={
+              pauseHomeAnimation
+                ? () => {
+                    //window.pauseLogoAnimation();
                   }
                 : null
             }
@@ -49,6 +60,20 @@ class CallToAction extends Component {
             href={href}
             target={newWindow ? "_blank" : null}
             rel="noopener noreferrer"
+            onMouseEnter={
+              pauseHomeAnimation
+                ? () => {
+                    //window.pauseLogoAnimation();
+                  }
+                : null
+            }
+            onMouseLeave={
+              pauseHomeAnimation
+                ? () => {
+                    //window.pauseLogoAnimation();
+                  }
+                : null
+            }
           >
             <span>{label}</span>
             {icon && (
@@ -73,6 +98,7 @@ CallToAction.propTypes = {
   isSecondary: PropTypes.bool,
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  pauseHomeAnimation: PropTypes.bool,
   href: PropTypes.string,
   newWindow: PropTypes.bool,
   icon: PropTypes.string

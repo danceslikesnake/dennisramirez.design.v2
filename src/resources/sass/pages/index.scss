@@ -1,1 +1,30 @@
 @import "../utilities/all";
+
+.logoAnimation {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.homeLogoMask {
+  @include set-z-index("navigation");
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+
+  &__img {
+    &.-desktop {
+      display: none;
+      @include media_queries($tablet) {
+        display: block;
+      }
+    }
+    &.-mobile {
+      @include media_queries($tablet) {
+        display: none;
+      }
+    }
+  }
+}
