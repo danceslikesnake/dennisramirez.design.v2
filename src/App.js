@@ -30,10 +30,11 @@ export default class App extends Component {
       fontLoaded: false,
       projects: projects,
       imagesLoaded: false,
-      activeProjectIndex: 0,
+      activeProjectIndex: 1,
       projectsAreTransitioning: false,
       slicesAction: "init",
-      transitionDirection: "next"
+      transitionDirection: "next",
+      showDetail: false
     };
 
     // check that fonts are loaded
@@ -49,15 +50,15 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener("wheel", this.handleScroll);
-    window.addEventListener("touchstart", this.handleTouchStart);
-    window.addEventListener("touchend", this.handleTouchEnd);
+    //window.addEventListener("wheel", this.handleScroll);
+    //window.addEventListener("touchstart", this.handleTouchStart);
+    //window.addEventListener("touchend", this.handleTouchEnd);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("wheel", this.handleScroll);
-    window.removeEventListener("touchstart", this.handleTouchStart);
-    window.removeEventListener("touchend", this.handleTouchEnd);
+    //window.removeEventListener("wheel", this.handleScroll);
+    //window.removeEventListener("touchstart", this.handleTouchStart);
+    //window.removeEventListener("touchend", this.handleTouchEnd);
   }
 
   fontObserver = () => {
@@ -215,6 +216,12 @@ export default class App extends Component {
     }
   };
 
+  showDetail = () => {
+    this.setState({
+      showDetail: true
+    });
+  };
+
   render() {
     const { projects, activeProjectIndex } = this.state;
     const activeProject = projects[activeProjectIndex];
@@ -240,7 +247,91 @@ export default class App extends Component {
             goToNextProject={this.clickAdvance}
           />
         ) : (
-          <ProjectHero project={activeProject} />
+          <>
+            <ProjectHero
+              project={activeProject}
+              detailIsVisible={this.state.showDetail}
+              showDetail={this.showDetail}
+            />
+            {this.state.showDetail && (
+              <div className="projectDetail">
+                <div className="projectMarquee">
+                  <div className="container -expanded">
+                    <h2 className="projectMarquee__description">
+                      A nostalgic throwback promoting Punk Goes Acoustic, Vol 3.
+                    </h2>
+                    <ul className="projectMarquee__actions">
+                      <li>
+                        <a
+                          className="projectMarquee__action"
+                          href="#"
+                          target="_blank"
+                        >
+                          View Website{" "}
+                          <span className="fad fa-external-link"></span>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          className="projectMarquee__action"
+                          href="#"
+                          target="_blank"
+                        >
+                          View GitHub{" "}
+                          <span className="fad fa-external-link"></span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="projectMetadata">
+                  <div className="container -expanded">
+                    <div className="columns projectMetadata__lists">
+                      <div className="column">
+                        <div className="columns is-mobile">
+                          <div className="column">
+                            <ul className="projectMetadata__list">
+                              <li className="projectMetadata__listLabel">
+                                Client
+                              </li>
+                              <li>Fearless Records</li>
+                            </ul>
+                            <ul className="projectMetadata__list">
+                              <li className="projectMetadata__listLabel">
+                                Tools
+                              </li>
+                              <li>Laravel, MySQL</li>
+                            </ul>
+                          </div>
+                          <div className="column">
+                            <ul className="projectMetadata__list">
+                              <li className="projectMetadata__listLabel">
+                                Services
+                              </li>
+                              <li>Website, CMS</li>
+                            </ul>
+                            <ul className="projectMetadata__list">
+                              <li className="projectMetadata__listLabel">
+                                YEAR
+                              </li>
+                              <li>2019</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="column">
+                        <p>
+                          Fearless wanted a nostalgic feel to promote the latest
+                          Punk Goes Acoustic, so we redesigned everything to
+                          look like the old MySpace website, warts and all.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </>
         )}
       </>
     );

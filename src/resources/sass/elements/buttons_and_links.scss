@@ -120,3 +120,11 @@
     }
   }
 }
+
+.projectMarquee {
+  &__action {
+    @include transition(all 0.2s);
+    color: $color-razzmatazz-pink;
+    border-bottom: 8px solid $color-razzmatazz-pink;
+  }
+}

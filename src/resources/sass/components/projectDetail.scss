@@ -1,0 +1,63 @@
+@import "../utilities/all";
+
+.projectDetail {
+  @include set-z-index("content");
+  position: absolute;
+  top: calc(100% - 144px);
+  width: 100%;
+  color: $color-deep-purple;
+  letter-spacing: -0.79px;
+}
+
+.projectMarquee {
+  margin-bottom: 8px;
+  background: white;
+  font-size: type-scale(2);
+  letter-spacing: -1.09px;
+  @include calculate-line-height(1.66666666666);
+  @include media_queries($desktop) {
+    font-size: type-scale(3);
+    letter-spacing: -1.43px;
+    @include calculate-line-height(1.333333333333);
+  }
+
+  &__description {
+    @include sofia-pro-black;
+    padding: 48px 24px 24px 24px;
+  }
+
+  &__actions {
+    @include sofia-pro-black;
+    padding: 16px 24px 64px 24px;
+
+    li {
+      display: inline-block;
+      padding-right: 32px;
+    }
+  }
+}
+
+.projectMetadata {
+  @include calculate-line-height(1.333333333333);
+  background: white;
+  padding: 32px 0 24px 0;
+  letter-spacing: -0.6px;
+  @include media_queries($desktop) {
+    font-size: type-scale(1);
+    letter-spacing: -0.79px;
+  }
+
+  &__lists {
+    margin-top: 0;
+    padding: 0 24px;
+  }
+
+  &__list {
+    margin-bottom: 24px;
+  }
+
+  &__listLabel {
+    @include sofia-pro-black;
+    text-transform: uppercase;
+  }
+}

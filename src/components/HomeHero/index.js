@@ -6,7 +6,7 @@ import CallToAction from "../shared/CallToAction";
 
 class HomeHero extends Component {
   componentDidMount() {
-    setTimeout(window.startLogoNoise(), 1000);
+    //setTimeout(window.startLogoNoise(), 1000);
   }
 
   componentWillUnmount() {

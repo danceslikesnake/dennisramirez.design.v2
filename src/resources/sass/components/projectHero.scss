@@ -5,6 +5,9 @@
   @include set-z-index("content");
   width: 100%;
   height: 100%;
+  &.-makeAbsolute {
+    position: absolute;
+  }
 
   &__contentWrapper {
     @include background-size("cover");
@@ -53,18 +56,26 @@
 
   &__headline {
     @include sofia-pro-black;
-    font-size: type-scale(6, $dense-font-size);
+    @include calculate-line-height(1.3333333333);
+    font-size: type-scale(2);
     background: white;
-    letter-spacing: -2.96px;
+    letter-spacing: -0.15px;
     padding: 50px 24px 0 24px;
     height: 136px;
     position: relative;
     color: black;
+    @include media_queries($desktop) {
+      font-size: type-scale(6, $dense-font-size);
+      letter-spacing: -2.96px;
+    }
   }
 
   &__headlineIcon {
     @include positionAbsolute($right: 24px, $top: 50%, $align: "vertical");
-    width: 120px;
+    width: 88px;
+    @include media_queries($desktop) {
+      width: 120px;
+    }
   }
 
   &__actions {

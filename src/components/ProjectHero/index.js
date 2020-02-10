@@ -6,7 +6,13 @@ class ProjectHero extends Component {
   render() {
     const { project } = this.props;
     return (
-      <div className="projectHero">
+      <div
+        className={
+          this.props.detailIsVisible
+            ? "projectHero -makeAbsolute"
+            : "projectHero"
+        }
+      >
         <div
           className="projectHero__contentWrapper"
           style={{ backgroundImage: `url(${project.heroImage})` }}
@@ -38,6 +44,7 @@ class ProjectHero extends Component {
                   ctaType="button"
                   label="View Details"
                   icon="far fa-envelope"
+                  onClick={this.props.showDetail}
                 />
               </div>
             </div>
