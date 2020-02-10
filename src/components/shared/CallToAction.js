@@ -11,10 +11,12 @@ class CallToAction extends Component {
       href,
       newWindow,
       icon,
-      pauseHomeAnimation
+      pauseHomeAnimation,
+      extraClasses
     } = this.props;
     let classes = "callToAction";
     if (isSecondary) classes += " -is-secondary";
+    if (extraClasses) classes += " " + extraClasses;
 
     switch (ctaType) {
       case "button":
@@ -33,14 +35,14 @@ class CallToAction extends Component {
             onMouseEnter={
               pauseHomeAnimation
                 ? () => {
-                    //window.pauseLogoAnimation();
+                    window.pauseLogoAnimation(true);
                   }
                 : null
             }
             onMouseLeave={
               pauseHomeAnimation
                 ? () => {
-                    //window.pauseLogoAnimation();
+                    window.pauseLogoAnimation(false);
                   }
                 : null
             }
@@ -63,14 +65,14 @@ class CallToAction extends Component {
             onMouseEnter={
               pauseHomeAnimation
                 ? () => {
-                    //window.pauseLogoAnimation();
+                    window.pauseLogoAnimation(true);
                   }
                 : null
             }
             onMouseLeave={
               pauseHomeAnimation
                 ? () => {
-                    //window.pauseLogoAnimation();
+                    window.pauseLogoAnimation(false);
                   }
                 : null
             }
@@ -101,7 +103,8 @@ CallToAction.propTypes = {
   pauseHomeAnimation: PropTypes.bool,
   href: PropTypes.string,
   newWindow: PropTypes.bool,
-  icon: PropTypes.string
+  icon: PropTypes.string,
+  extraClasses: PropTypes.string
 };
 
 export default CallToAction;

@@ -1,7 +1,6 @@
 @import "../utilities/all";
 
 .callToAction {
-  @include set-prefix(box-shadow, inset 0px 0px 0px 8px rgba(black, 0.3));
   @include sofia-pro-black;
   @include transition(background 0.3s);
   display: block;
@@ -55,6 +54,23 @@
     }
   }
 
+  &.-isNav {
+    display: inline-block;
+    padding-right: v-rhythm(9, "px");
+  }
+
+  &.-viewMyWork {
+    margin: 0 auto;
+    max-width: 240px;
+    &:after {
+      @include pseudos;
+      @include positionAbsolute($top: 100%, $left: 50%, $align: "horizontal");
+      width: 1px;
+      height: 72px;
+      background: $color-razzmatazz-pink;
+    }
+  }
+
   span {
     position: relative;
   }
@@ -66,5 +82,41 @@
     background: none;
     border: none;
     padding: 24px;
+  }
+  &__hireMe {
+    @include sofia-pro-black;
+    @include transition(all 0.2s);
+    color: white;
+    display: inline-block;
+    margin-right: v-rhythm(3, "px");
+    border-bottom: 8px solid $color-razzmatazz-pink;
+    font-size: type-scale(1, $dense-font-size);
+    letter-spacing: -0.79px;
+    line-height: v-rhythm(6, "px");
+    padding: 0 v-rhythm(2, "px");
+    position: relative;
+    @include media_queries($desktop) {
+      font-size: type-scale(2);
+    }
+    &:before {
+      @include pseudos;
+      @include transition(width 0.2s);
+      @include positionAbsolute($top: 0, $left: 0);
+      @include set-z-index("body-backgrounds");
+      width: 0;
+      height: v-rhythm(6, "px");
+      background: $color-razzmatazz-pink;
+    }
+    &:hover {
+      color: white;
+      border-bottom-color: rgb(186, 0, 83);
+      &:before {
+        width: 100%;
+      }
+    }
+
+    span {
+      margin-left: v-rhythm(1, "px");
+    }
   }
 }

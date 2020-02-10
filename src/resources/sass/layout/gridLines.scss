@@ -4,8 +4,8 @@
   @include positionFixed($top: 0, $bottom: 0);
   @include set-z-index("sub-navigation");
   pointer-events: none;
-  border-left: 1px solid rgba(white, 0.15);
-  border-right: 1px solid rgba(white, 0.15);
+  border-left: 1px solid rgba(white, 0.2);
+  border-right: 1px solid rgba(white, 0.2);
 
   &.-center {
     border-right: none;

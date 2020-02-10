@@ -792,8 +792,8 @@ function destroy() {
   cancelAnimationFrame(myReq);
 }
 
-function pauseLogoAnimation() {
-  animIsPaused = !animIsPaused;
+function pauseLogoAnimation(bool) {
+  animIsPaused = bool;
   if (!animIsPaused && !isTransitioning) {
     draw();
   }
@@ -829,7 +829,6 @@ function initParticles() {
 function draw() {
   if (!animIsPaused && !isTransitioning) {
     myReq = requestAnimationFrame(draw);
-    console.log(myReq);
     calculateField();
     noiseZ += config.noiseSpeed;
     drawParticles();

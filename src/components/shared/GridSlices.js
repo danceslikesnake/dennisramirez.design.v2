@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { gsap } from "gsap";
 
@@ -10,7 +10,9 @@ class GridSlices extends Component {
     };
 
     this.slicesReveal = gsap.timeline({ paused: true });
+    this.slicesRevealPrev = gsap.timeline({ paused: true });
     this.slicesHide = gsap.timeline({ paused: true });
+    this.slicesHidePrev = gsap.timeline({ paused: true });
   }
 
   componentDidMount() {
@@ -22,16 +24,12 @@ class GridSlices extends Component {
         from: "random",
         amount: 0.4
       },
-      onStart: () => {
-        console.log("OLLO");
-      },
       onComplete: () => {
         this.setState(
           {
             isAnimating: false
           },
           () => {
-            console.log("reveal anim complete, making call back");
             this.props.gridSlicesCallback("reveal");
           }
         );
@@ -46,8 +44,49 @@ class GridSlices extends Component {
         from: "random",
         amount: 0.4
       },
-      onStart: () => {
-        console.log("BOLLO");
+      onComplete: () => {
+        this.setState(
+          {
+            isAnimating: false
+          },
+          () => {
+            this.props.gridSlicesCallback("hide");
+          }
+        );
+      }
+    });
+
+    this.slicesRevealPrev.fromTo(
+      ".gridSlices__slice",
+      { top: "-100%" },
+      {
+        top: "0",
+        duration: 0.65,
+        ease: "expo.in",
+        stagger: {
+          from: "random",
+          amount: 0.4
+        },
+        onComplete: () => {
+          this.setState(
+            {
+              isAnimating: false
+            },
+            () => {
+              this.props.gridSlicesCallback("revealPrev");
+            }
+          );
+        }
+      }
+    );
+
+    this.slicesHidePrev.to(".gridSlices__slice", {
+      top: "100%",
+      duration: 0.65,
+      ease: "expo.in",
+      stagger: {
+        from: "random",
+        amount: 0.4
       },
       onComplete: () => {
         this.setState(
@@ -55,8 +94,7 @@ class GridSlices extends Component {
             isAnimating: false
           },
           () => {
-            console.log("hide anim complete, making call back");
-            this.props.gridSlicesCallback("hide");
+            this.props.gridSlicesCallback("hidePrev");
           }
         );
       }
@@ -64,11 +102,8 @@ class GridSlices extends Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log(prevProps, this.props, prevState, this.state);
     if (this.props.sliceAction !== prevProps.sliceAction) {
-      console.log("is valid props for slices");
       if (!this.state.isAnimating) {
-        console.log("is not currently animating");
         switch (this.props.sliceAction) {
           case "reveal":
             this.setState(
@@ -76,7 +111,6 @@ class GridSlices extends Component {
                 isAnimating: true
               },
               () => {
-                console.log("starting reveal anim");
                 this.slicesReveal.seek(0);
                 this.slicesReveal.play();
               }
@@ -88,9 +122,30 @@ class GridSlices extends Component {
                 isAnimating: true
               },
               () => {
-                console.log("starting hide anim");
                 this.slicesHide.seek(0);
                 this.slicesHide.play();
+              }
+            );
+            break;
+          case "revealPrev":
+            this.setState(
+              {
+                isAnimating: true
+              },
+              () => {
+                this.slicesRevealPrev.seek(0);
+                this.slicesRevealPrev.play();
+              }
+            );
+            break;
+          case "hidePrev":
+            this.setState(
+              {
+                isAnimating: true
+              },
+              () => {
+                this.slicesHidePrev.seek(0);
+                this.slicesHidePrev.play();
               }
             );
             break;
@@ -102,7 +157,6 @@ class GridSlices extends Component {
   }
 
   render() {
-    //console.log('gris slices', this.props, this.state);
     return (
       <div className="gridSlices">
         <div className="gridSlices__slice -one" />
@@ -117,7 +171,13 @@ class GridSlices extends Component {
 }
 
 GridSlices.propTypes = {
-  sliceAction: PropTypes.oneOf(["reveal", "hide", "init"]),
+  sliceAction: PropTypes.oneOf([
+    "reveal",
+    "hide",
+    "init",
+    "revealPrev",
+    "hidePrev"
+  ]),
   gridSlicesCallback: PropTypes.func
 };
 

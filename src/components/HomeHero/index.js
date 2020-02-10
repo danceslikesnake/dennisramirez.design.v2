@@ -24,10 +24,12 @@ class HomeHero extends Component {
               <img
                 className="homeLogoMask__img -desktop"
                 src={require("../../resources/img/home-logo-500.png")}
+                alt="Homepage Logo Mask"
               />
               <img
                 className="homeLogoMask__img -mobile"
                 src={require("../../resources/img/home-logo.png")}
+                alt="Homepage Logo Mask"
               />
             </div>
             <div className="projectHero__content" style={{ zIndex: 6 }}>
@@ -35,26 +37,15 @@ class HomeHero extends Component {
                 <h1 className="projectHero__homeHeadline">
                   {ReactHtmlParser(project.headline)}
                 </h1>
-                <div className="projectHero__homeActions level is-mobile">
-                  <div className="level-item">
-                    <CallToAction
-                      label="Hire me!"
-                      href="mailTo:designexcathedra@gmail.com?subject=Hello! I would like to hire you!"
-                      newWindow
-                      icon="far fa-envelope"
-                      pauseHomeAnimation
-                    />
-                  </div>
-                  <div className="level-item">
-                    <CallToAction
-                      label="View My Work"
-                      ctaType="button"
-                      isSecondary
-                      icon="far fa-arrow-circle-down"
-                      onClick={this.props.goToNextProject}
-                      pauseHomeAnimation
-                    />
-                  </div>
+                <div className="has-text-centered">
+                  <CallToAction
+                    label="View My Work"
+                    ctaType="button"
+                    icon="far fa-arrow-circle-down"
+                    onClick={this.props.goToNextProject}
+                    pauseHomeAnimation
+                    extraClasses="-viewMyWork"
+                  />
                 </div>
               </div>
             </div>
@@ -66,7 +57,8 @@ class HomeHero extends Component {
 }
 
 HomeHero.propTypes = {
-  project: PropTypes.object
+  project: PropTypes.object,
+  goToNextProject: PropTypes.func
 };
 
 export default HomeHero;

@@ -9,6 +9,7 @@ import { projects } from "./resources/data/projects";
 import ProjectHero from "./components/ProjectHero/index";
 import HomeHero from "./components/HomeHero";
 import GridSlices from "./components/shared/GridSlices";
+import Navigation from "./components/shared/Navigation";
 
 const debounce = (func, delay) => {
   let inDebounce;
@@ -63,7 +64,6 @@ export default class App extends Component {
     Promise.all([new FontFaceObserver("sofia-pro").load()]).then(
       () => {
         document.documentElement.classList.add("fonts-loaded");
-        console.log("font is loaded");
         this.setState({ fontLoaded: true });
       },
       err => {
@@ -73,43 +73,51 @@ export default class App extends Component {
   };
 
   handleScroll = debounce(event => {
+    if (!window.animIsPaused) window.pauseLogoAnimation(true);
+    let currentIndex = this.state.activeProjectIndex;
+    let totalProjects = this.state.projects.length - 1;
+    let delta = event.wheelDelta / 30 || -event.detail;
+
     if (this.state.fontLoaded === true && this.state.imagesLoaded === true) {
-      //console.log("scroll event detected");
       //Normalize event wheel delta
-      var delta = event.wheelDelta / 30 || -event.detail;
 
       //If the user scrolled up, it goes to previous slide, otherwise - to next slide
       if (!this.state.projectsAreTransitioning) {
-        console.log("projects are transitioning from scroll");
-        console.log(delta);
+        window.setTransitioning();
+
         if (delta < -1) {
-          window.setTransitioning();
-          this.setState(
-            {
-              projectsAreTransitioning: true
-            },
-            () => {
-              this.goToNextProject();
-            }
-          );
+          if (currentIndex < totalProjects) {
+            this.setState(
+              {
+                projectsAreTransitioning: true
+              },
+              () => {
+                this.goToNextProject();
+              }
+            );
+          }
         } else if (delta > 1) {
+          if (currentIndex > 0) {
+            this.setState(
+              {
+                projectsAreTransitioning: true
+              },
+              () => {
+                this.goToPreviousProject();
+              }
+            );
+          }
+        } else {
           window.setTransitioning();
-          this.setState(
-            {
-              projectsAreTransitioning: true
-            },
-            () => {
-              this.goToPreviousProject();
-            }
-          );
+          if (window.animIsPaused) window.pauseLogoAnimation(false);
         }
       }
     }
-  }, 15);
+  }, 13);
 
   handleTouchStart = debounce(event => {
     ts = event.touches[0].clientY;
-  }, 15);
+  }, 13);
 
   handleTouchEnd = debounce(event => {
     if (!this.state.projectsAreTransitioning) {
@@ -121,7 +129,7 @@ export default class App extends Component {
       }
     }
     event.preventDefault();
-  }, 15);
+  }, 13);
 
   preloadImages = imgs => {
     let imgLoadedCount = 0;
@@ -131,56 +139,55 @@ export default class App extends Component {
       img.src = url;
       img.onload = () => {
         imgLoadedCount++;
-        if (imgLoadedCount == imgCount) {
+        if (imgLoadedCount === imgCount) {
           this.setState({
             imagesLoaded: true
           });
-          console.log("images are loaded");
         }
       };
     });
   };
 
   gridSlicesCallback = actionCompleted => {
-    console.log(actionCompleted + " completed");
-    if (actionCompleted == "reveal") {
-      let currentIndex = this.state.activeProjectIndex;
-      let totalProjects = this.state.projects.length - 1;
-      console.log("transition direction is " + this.state.transitionDirection);
-      console.log("project index is " + currentIndex);
-      console.log("project length is " + this.state.projects.length);
-      this.setState(
-        {
-          activeProjectIndex: currentIndex + 1
-        },
-        () => {
-          console.log(
-            "project index changed to " + this.state.activeProjectIndex
-          );
-          console.log("calling hide animation");
-          this.setState({
-            slicesAction: "hide"
-          });
-        }
-      );
-    }
-    if (actionCompleted == "hide") {
-      console.log("resetting animation and transition flags");
-      window.setTransitioning();
-      this.setState(
-        {
+    let currentIndex = this.state.activeProjectIndex;
+
+    switch (actionCompleted) {
+      case "reveal":
+        this.setState(
+          {
+            activeProjectIndex: currentIndex + 1
+          },
+          () => {
+            this.setState({
+              slicesAction: "hide"
+            });
+          }
+        );
+        break;
+      case "revealPrev":
+        this.setState(
+          {
+            activeProjectIndex: currentIndex - 1
+          },
+          () => {
+            this.setState({
+              slicesAction: "hidePrev"
+            });
+          }
+        );
+        break;
+      case "hidePrev":
+      case "hide":
+        window.setTransitioning();
+        window.pauseLogoAnimation(false);
+        this.setState({
           projectsAreTransitioning: false
-        },
-        () => {
-          console.log("everything reset");
-        }
-      );
+        });
+        break;
     }
   };
 
   goToNextProject = () => {
-    console.log("next project function called");
-    console.log("starting reveal animation");
     this.setState({
       slicesAction: "reveal",
       transitionDirection: "next"
@@ -188,12 +195,10 @@ export default class App extends Component {
   };
 
   goToPreviousProject = () => {
-    /*window.setTransitioning();
     this.setState({
-      projectsAreTransitioning: true,
-      slicesAction: "reveal",
+      slicesAction: "revealPrev",
       transitionDirection: "prev"
-    });*/
+    });
   };
 
   clickAdvance = () => {
@@ -204,7 +209,6 @@ export default class App extends Component {
         },
         () => {
           window.setTransitioning();
-          console.log("projects are transitioning from click");
           this.goToNextProject();
         }
       );
@@ -212,7 +216,6 @@ export default class App extends Component {
   };
 
   render() {
-    //console.log('home', this.props, this.state);
     const { projects, activeProjectIndex } = this.state;
     const activeProject = projects[activeProjectIndex];
     return (
@@ -224,35 +227,14 @@ export default class App extends Component {
           </div>
         ) : null}
         <div className="gridLines -outer" />
-        <div className="gridLines -center" />
+
         <div className="gridLines -inner" />
         <GridSlices
           sliceAction={this.state.slicesAction}
           gridSlicesCallback={this.gridSlicesCallback}
         />
-        <nav className="mainNavigation">
-          <div className="container -expanded">
-            <ul className="level is-mobile">
-              <li className="level-left">
-                <div className="level-item">
-                  <span className="mainNavigation__myName">Dennis Ramirez</span>
-                </div>
-              </li>
-              <li className="level-right">
-                <div className="level-item">
-                  <button type="button" className="mainNavigation__menuButton">
-                    <img
-                      src={require("./resources/img/nav-menu-btn.svg")}
-                      className="mainNavigation__menuButtonImg"
-                      alt="menu button"
-                    />
-                  </button>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        {activeProject.id == "home" ? (
+        <Navigation />
+        {activeProject.id === "home" ? (
           <HomeHero
             project={activeProject}
             goToNextProject={this.clickAdvance}

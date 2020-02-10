@@ -2,6 +2,7 @@
 
 .projectHero {
   @include positionFixed();
+  @include set-z-index("content");
   width: 100%;
   height: 100%;
 
@@ -26,6 +27,7 @@
     margin-bottom: v-rhythm(5, "px");
     letter-spacing: -1.05px;
     padding: 0 24px;
+    text-align: center;
     @include media_queries($desktop) {
       @include calculate-line-height(4);
       font-size: type-scale(6, $dense-font-size);

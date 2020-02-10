@@ -10,7 +10,6 @@
     color: white;
     font-size: type-scale(1, $dense-font-size);
     padding-left: 24px;
-    padding-bottom: 8px;
     @include media_queries($desktop) {
       font-size: type-scale(2);
     }
