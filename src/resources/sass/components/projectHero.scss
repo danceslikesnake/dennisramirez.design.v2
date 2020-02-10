@@ -49,9 +49,12 @@
   }
 
   &__headlineWrapper {
-    @include positionAbsolute($bottom: 152px);
+    @include positionAbsolute($bottom: 136px);
     width: 100%;
     mix-blend-mode: screen;
+    @include media_queries($desktop) {
+      bottom: 152px;
+    }
   }
 
   &__headline {
@@ -60,19 +63,23 @@
     font-size: type-scale(2);
     background: white;
     letter-spacing: -0.15px;
-    padding: 50px 24px 0 24px;
-    height: 136px;
+    padding: 32px 24px 0 24px;
+    height: 96px;
     position: relative;
     color: black;
+    margin: 0 16px;
     @include media_queries($desktop) {
       font-size: type-scale(6, $dense-font-size);
       letter-spacing: -2.96px;
+      margin: 0;
+      height: 136px;
+      padding: 50px 24px 0 24px;
     }
   }
 
   &__headlineIcon {
     @include positionAbsolute($right: 24px, $top: 50%, $align: "vertical");
-    width: 88px;
+    width: 80px;
     @include media_queries($desktop) {
       width: 120px;
     }
@@ -80,7 +87,12 @@
 
   &__actions {
     @include positionAbsolute($bottom: 72px);
-    width: 100%;
+    width: calc(100% - 32px);
+    margin-left: 16px;
+    @include media_queries($desktop) {
+      width: 100%;
+      margin-left: 0;
+    }
   }
 
   &__action {
@@ -88,11 +100,16 @@
     &.-skillSet {
       background: white;
       color: black;
-      line-height: 72px;
-      font-size: type-scale(1);
-      padding: 0 24px;
+      padding: 8px 24px;
       mix-blend-mode: screen;
       letter-spacing: -0.79px;
+      line-height: 40px;
+      @include media_queries($desktop) {
+        font-size: type-scale(1);
+        letter-spacing: -0.79px;
+        line-height: 72px;
+        padding: 0 24px;
+      }
 
       strong {
         @include sofia-pro-black;
