@@ -30,7 +30,7 @@ export default class App extends Component {
       fontLoaded: false,
       projects: projects,
       imagesLoaded: false,
-      activeProjectIndex: 1,
+      activeProjectIndex: 0,
       projectsAreTransitioning: false,
       slicesAction: "init",
       transitionDirection: "next",
@@ -50,15 +50,15 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    //window.addEventListener("wheel", this.handleScroll);
-    //window.addEventListener("touchstart", this.handleTouchStart);
-    //window.addEventListener("touchend", this.handleTouchEnd);
+    window.addEventListener("wheel", this.handleScroll);
+    window.addEventListener("touchstart", this.handleTouchStart);
+    window.addEventListener("touchend", this.handleTouchEnd);
   }
 
   componentWillUnmount() {
-    //window.removeEventListener("wheel", this.handleScroll);
-    //window.removeEventListener("touchstart", this.handleTouchStart);
-    //window.removeEventListener("touchend", this.handleTouchEnd);
+    window.removeEventListener("wheel", this.handleScroll);
+    window.removeEventListener("touchstart", this.handleTouchStart);
+    window.removeEventListener("touchend", this.handleTouchEnd);
   }
 
   fontObserver = () => {
@@ -74,43 +74,45 @@ export default class App extends Component {
   };
 
   handleScroll = debounce(event => {
-    if (!window.animIsPaused) window.pauseLogoAnimation(true);
-    let currentIndex = this.state.activeProjectIndex;
-    let totalProjects = this.state.projects.length - 1;
-    let delta = event.wheelDelta / 30 || -event.detail;
+    if (!this.state.showDetail) {
+      if (!window.animIsPaused) window.pauseLogoAnimation(true);
+      let currentIndex = this.state.activeProjectIndex;
+      let totalProjects = this.state.projects.length - 1;
+      let delta = event.wheelDelta / 30 || -event.detail;
 
-    if (this.state.fontLoaded === true && this.state.imagesLoaded === true) {
-      //Normalize event wheel delta
+      if (this.state.fontLoaded === true && this.state.imagesLoaded === true) {
+        //Normalize event wheel delta
 
-      //If the user scrolled up, it goes to previous slide, otherwise - to next slide
-      if (!this.state.projectsAreTransitioning) {
-        window.setTransitioning();
-
-        if (delta < -1) {
-          if (currentIndex < totalProjects) {
-            this.setState(
-              {
-                projectsAreTransitioning: true
-              },
-              () => {
-                this.goToNextProject();
-              }
-            );
-          }
-        } else if (delta > 1) {
-          if (currentIndex > 0) {
-            this.setState(
-              {
-                projectsAreTransitioning: true
-              },
-              () => {
-                this.goToPreviousProject();
-              }
-            );
-          }
-        } else {
+        //If the user scrolled up, it goes to previous slide, otherwise - to next slide
+        if (!this.state.projectsAreTransitioning) {
           window.setTransitioning();
-          if (window.animIsPaused) window.pauseLogoAnimation(false);
+
+          if (delta < -1) {
+            if (currentIndex < totalProjects) {
+              this.setState(
+                {
+                  projectsAreTransitioning: true
+                },
+                () => {
+                  this.goToNextProject();
+                }
+              );
+            }
+          } else if (delta > 1) {
+            if (currentIndex > 0) {
+              this.setState(
+                {
+                  projectsAreTransitioning: true
+                },
+                () => {
+                  this.goToPreviousProject();
+                }
+              );
+            }
+          } else {
+            window.setTransitioning();
+            if (window.animIsPaused) window.pauseLogoAnimation(false);
+          }
         }
       }
     }

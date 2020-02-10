@@ -3,10 +3,13 @@
 .projectDetail {
   @include set-z-index("content");
   position: absolute;
-  top: calc(100% - 144px);
+  top: calc(100% - 128px);
   width: 100%;
   color: $color-deep-purple;
   letter-spacing: -0.79px;
+  @include media_queries($desktop) {
+    top: calc(100% - 144px);
+  }
 }
 
 .projectMarquee {
@@ -23,16 +26,27 @@
 
   &__description {
     @include sofia-pro-black;
-    padding: 48px 24px 24px 24px;
+    padding: 24px 40px 16px 40px;
+    @include media_queries($desktop) {
+      padding: 48px 24px 24px 24px;
+    }
   }
 
   &__actions {
     @include sofia-pro-black;
-    padding: 16px 24px 64px 24px;
+    padding: 16px 40px 32px 40px;
+    @include media_queries($desktop) {
+      padding: 16px 24px 64px 24px;
+    }
 
     li {
       display: inline-block;
-      padding-right: 32px;
+      padding-right: 24px;
+      margin-bottom: 24px;
+      @include media_queries($desktop) {
+        padding-right: 32px;
+        margin-bottom: 0;
+      }
     }
   }
 }
@@ -40,11 +54,12 @@
 .projectMetadata {
   @include calculate-line-height(1.333333333333);
   background: white;
-  padding: 32px 0 24px 0;
+  padding: 32px 16px 24px 16px;
   letter-spacing: -0.6px;
   @include media_queries($desktop) {
     font-size: type-scale(1);
     letter-spacing: -0.79px;
+    padding: 32px 0 24px 0;
   }
 
   &__lists {
