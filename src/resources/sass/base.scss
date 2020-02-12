@@ -20,6 +20,11 @@ body {
   @include calculate-line-height(1);
   position: relative;
   min-height: 100%;
+  overflow: hidden;
+}
+
+.-unFreezeBody {
+  overflow: initial;
 }
 
 // for styling unstyled text

@@ -225,6 +225,7 @@ export default class App extends Component {
   };
 
   showDetail = () => {
+    document.body.classList.add("-unFreezeBody");
     this.setState({
       showDetail: true
     });
@@ -233,7 +234,6 @@ export default class App extends Component {
   render() {
     const { projects, activeProjectIndex } = this.state;
     const activeProject = projects[activeProjectIndex];
-
     return (
       <>
         {this.state.fontLoaded === false ||
