@@ -76,6 +76,10 @@ export default class App extends Component {
 
   handleScroll = debounce(event => {
     if (!this.state.showDetail) {
+      /*console.log("scroll detected");
+      console.log("window anim is paused", window.animIsPaused);
+      console.log("window is transitioning", window.isTransitioning);
+      console.log("state is transitioning", this.state.projectsAreTransitioning);*/
       if (!window.animIsPaused) window.pauseLogoAnimation(true);
       let currentIndex = this.state.activeProjectIndex;
       let totalProjects = this.state.projects.length - 1;
@@ -87,7 +91,6 @@ export default class App extends Component {
         //If the user scrolled up, it goes to previous slide, otherwise - to next slide
         if (!this.state.projectsAreTransitioning) {
           window.setTransitioning();
-
           if (delta < -1) {
             if (currentIndex < totalProjects) {
               this.setState(
@@ -117,11 +120,11 @@ export default class App extends Component {
         }
       }
     }
-  }, 13);
+  }, 7);
 
   handleTouchStart = debounce(event => {
     ts = event.touches[0].clientY;
-  }, 13);
+  }, 7);
 
   handleTouchEnd = debounce(event => {
     if (!this.state.projectsAreTransitioning) {
@@ -133,7 +136,7 @@ export default class App extends Component {
       }
     }
     event.preventDefault();
-  }, 13);
+  }, 7);
 
   preloadImages = imgs => {
     let imgLoadedCount = 0;
@@ -230,6 +233,7 @@ export default class App extends Component {
   render() {
     const { projects, activeProjectIndex } = this.state;
     const activeProject = projects[activeProjectIndex];
+
     return (
       <>
         {this.state.fontLoaded === false ||
