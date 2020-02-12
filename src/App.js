@@ -127,12 +127,14 @@ export default class App extends Component {
   }, 7);
 
   handleTouchEnd = debounce(event => {
-    if (!this.state.projectsAreTransitioning) {
-      let te = event.changedTouches[0].clientY;
-      if (ts > te + 5) {
-        this.goToNextProject();
-      } else if (ts < te - 5) {
-        this.goToPreviousProject();
+    if (!this.state.showDetail) {
+      if (!this.state.projectsAreTransitioning) {
+        let te = event.changedTouches[0].clientY;
+        if (ts > te + 5) {
+          this.goToNextProject();
+        } else if (ts < te - 5) {
+          this.goToPreviousProject();
+        }
       }
     }
     event.preventDefault();
