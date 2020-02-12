@@ -15,6 +15,19 @@
     height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
+    &.-addGradient {
+      &:after {
+        @include pseudos;
+        @include positionAbsolute($bottom: 0, $left: 0, $right: 0);
+        @include background-gradient(
+          rgba($color-deep-purple, 0),
+          rgba($color-deep-purple, 1),
+          "vertical"
+        );
+        height: 208px;
+        z-index: 0;
+      }
+    }
   }
 
   &__content {
@@ -51,7 +64,7 @@
   &__headlineWrapper {
     @include positionAbsolute($bottom: 136px);
     width: 100%;
-    mix-blend-mode: screen;
+    z-index: 1;
     @include media_queries($desktop) {
       bottom: 152px;
     }
@@ -89,6 +102,7 @@
     @include positionAbsolute($bottom: 72px);
     width: calc(100% - 32px);
     margin-left: 16px;
+    z-index: 1;
     @include media_queries($desktop) {
       width: 100%;
       margin-left: 0;

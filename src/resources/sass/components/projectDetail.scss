@@ -15,28 +15,32 @@
 .projectMarquee {
   margin-bottom: 8px;
   background: white;
-  font-size: type-scale(2);
-  letter-spacing: -1.09px;
-  @include calculate-line-height(1.66666666666);
-  @include media_queries($desktop) {
-    font-size: type-scale(3);
-    letter-spacing: -1.43px;
-    @include calculate-line-height(1.333333333333);
-  }
 
   &__description {
     @include sofia-pro-black;
     padding: 24px 40px 16px 40px;
+    font-size: type-scale(2);
+    letter-spacing: -1.09px;
+    @include calculate-line-height(1.66666666666);
     @include media_queries($desktop) {
       padding: 48px 24px 24px 24px;
+      font-size: type-scale(3);
+      letter-spacing: -1.43px;
+      @include calculate-line-height(1.333333333333);
     }
   }
 
   &__actions {
     @include sofia-pro-black;
     padding: 16px 40px 32px 40px;
+    font-size: type-scale(2);
+    letter-spacing: -1.09px;
+    @include calculate-line-height(1.66666666666);
     @include media_queries($desktop) {
       padding: 16px 24px 64px 24px;
+      font-size: type-scale(3);
+      letter-spacing: -1.43px;
+      @include calculate-line-height(1.333333333333);
     }
 
     li {

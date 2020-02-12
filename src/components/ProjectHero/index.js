@@ -17,7 +17,7 @@ class ProjectHero extends Component {
           className="projectHero__contentWrapper"
           style={{ backgroundImage: `url(${project.heroImage})` }}
         >
-          <div className="projectHero__headlineWrapper">
+          <div className="projectHero__headlineWrapper -blendModeScreen">
             <div className="container -expanded">
               <h1 className="projectHero__headline">
                 {project.projectName}
@@ -29,7 +29,7 @@ class ProjectHero extends Component {
               </h1>
             </div>
           </div>
-          <div className="projectHero__actions">
+          <div className="projectHero__actions -blendModeScreen">
             <div className="container -expanded">
               <div className="projectHero__action -skillSet">
                 <strong>Skills: </strong>
@@ -56,7 +56,8 @@ class ProjectHero extends Component {
 }
 
 ProjectHero.propTypes = {
-  project: PropTypes.object
+  project: PropTypes.object,
+  showDetail: PropTypes.bool
 };
 
 export default ProjectHero;

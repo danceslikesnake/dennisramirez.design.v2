@@ -10,6 +10,7 @@ import ProjectHero from "./components/ProjectHero/index";
 import HomeHero from "./components/HomeHero";
 import GridSlices from "./components/shared/GridSlices";
 import Navigation from "./components/shared/Navigation";
+import ProjectDetail from "./components/ProjectDetail";
 
 const debounce = (func, delay) => {
   let inDebounce;
@@ -30,11 +31,11 @@ export default class App extends Component {
       fontLoaded: false,
       projects: projects,
       imagesLoaded: false,
-      activeProjectIndex: 0,
+      activeProjectIndex: 1,
       projectsAreTransitioning: false,
       slicesAction: "init",
       transitionDirection: "next",
-      showDetail: false
+      showDetail: true
     };
 
     // check that fonts are loaded
@@ -187,6 +188,8 @@ export default class App extends Component {
           projectsAreTransitioning: false
         });
         break;
+      default:
+        break;
     }
   };
 
@@ -255,84 +258,7 @@ export default class App extends Component {
               detailIsVisible={this.state.showDetail}
               showDetail={this.showDetail}
             />
-            {this.state.showDetail && (
-              <div className="projectDetail">
-                <div className="projectMarquee">
-                  <div className="container -expanded">
-                    <h2 className="projectMarquee__description">
-                      A nostalgic throwback promoting Punk Goes Acoustic, Vol 3.
-                    </h2>
-                    <ul className="projectMarquee__actions">
-                      <li>
-                        <a
-                          className="projectMarquee__action"
-                          href="#"
-                          target="_blank"
-                        >
-                          View Website{" "}
-                          <span className="fad fa-external-link"></span>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="projectMarquee__action"
-                          href="#"
-                          target="_blank"
-                        >
-                          View GitHub{" "}
-                          <span className="fad fa-external-link"></span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div className="projectMetadata">
-                  <div className="container -expanded">
-                    <div className="columns projectMetadata__lists">
-                      <div className="column">
-                        <div className="columns is-mobile">
-                          <div className="column">
-                            <ul className="projectMetadata__list">
-                              <li className="projectMetadata__listLabel">
-                                Client
-                              </li>
-                              <li>Fearless Records</li>
-                            </ul>
-                            <ul className="projectMetadata__list">
-                              <li className="projectMetadata__listLabel">
-                                Tools
-                              </li>
-                              <li>Laravel, MySQL</li>
-                            </ul>
-                          </div>
-                          <div className="column">
-                            <ul className="projectMetadata__list">
-                              <li className="projectMetadata__listLabel">
-                                Services
-                              </li>
-                              <li>Website, CMS</li>
-                            </ul>
-                            <ul className="projectMetadata__list">
-                              <li className="projectMetadata__listLabel">
-                                YEAR
-                              </li>
-                              <li>2019</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="column">
-                        <p>
-                          Fearless wanted a nostalgic feel to promote the latest
-                          Punk Goes Acoustic, so we redesigned everything to
-                          look like the old MySpace website, warts and all.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
+            {this.state.showDetail && <ProjectDetail project={activeProject} />}
           </>
         )}
       </>

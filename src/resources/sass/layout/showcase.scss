@@ -1,0 +1,101 @@
+@import "../utilities/all";
+
+.showcase {
+  padding: v-rhythm(4, "px") v-rhythm(2, "px");
+  @include media_queries($desktop) {
+    padding: v-rhythm(6, "px") 0;
+  }
+
+  &__title {
+    @include sofia-pro-black;
+    @include calculate-line-height(1.66666666666);
+    font-size: type-scale(2);
+    letter-spacing: -1.09px;
+    color: color-shader($color-deep-purple, 6);
+    margin-bottom: v-rhythm(4, "px");
+    padding: 0 v-rhythm(3, "px");
+    @include media_queries($desktop) {
+      @include calculate-line-height(1.333333333333);
+      font-size: type-scale(3);
+      letter-spacing: -1.43px;
+      padding: 0 v-rhythm(3, "px");
+      margin-bottom: v-rhythm(6, "px");
+    }
+  }
+
+  &__description {
+    @include calculate-line-height(1.333333333333);
+    color: color-shader($color-deep-purple, 5);
+    padding: 0 v-rhythm(3, "px");
+    margin-top: -16px;
+    margin-bottom: v-rhythm(4, "px");
+    letter-spacing: -0.6px;
+    @include media_queries($desktop) {
+      font-size: type-scale(1);
+      letter-spacing: -0.79px;
+      margin-top: -8px;
+      margin-bottom: v-rhythm(6, "px");
+    }
+  }
+
+  &__caption {
+    color: color-shader($color-deep-purple, 4);
+    padding-top: v-rhythm(2, "px");
+    @include media_queries($desktop) {
+      font-size: type-scale(1);
+    }
+  }
+
+  &__screenshot {
+    padding: v-rhythm(3, "px");
+    background: color-shader($color-deep-purple, -2);
+    &:not(:last-child) {
+      margin-bottom: v-rhythm(4, "px");
+      @include media_queries($desktop) {
+        margin-bottom: v-rhythm(6, "px");
+      }
+    }
+
+    &.-isFullWidth {
+      width: calc(100vw - 32px);
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: calc(-50vw + 16px);
+      margin-right: -50vw;
+      @include media_queries($desktop) {
+        width: calc(100vw - 48px);
+        margin-left: calc(-50vw + 24px);
+      }
+    }
+
+    &.-noBg {
+      background: transparent;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  &__screenshotWrapper {
+    display: flex;
+    margin-bottom: v-rhythm(4, "px");
+    @include media_queries($desktop) {
+      margin-bottom: v-rhythm(6, "px");
+    }
+
+    .showcase__screenshot {
+      width: 50%;
+      @include media_queries($desktop) {
+        margin: 0 16px;
+        flex: 1;
+        width: auto;
+      }
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
