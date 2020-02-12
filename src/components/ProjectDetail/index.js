@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ReactHtmlParser from "react-html-parser";
+import LazyLoad from "react-lazyload";
 
 class ProjectDetail extends Component {
   render() {
@@ -77,14 +78,19 @@ class ProjectDetail extends Component {
                 case "text":
                   if (el.headline)
                     els.push(
-                      <div className="showcase__title">{el.headline}</div>
+                      <div key={"d" + idx} className="showcase__title">
+                        {el.headline}
+                      </div>
                     );
                   if (el.description) {
-                    el.description.map((desc, idx) => {
-                      els.push(
-                        <div className="showcase__description">{desc}</div>
+                    var tmp = el.description.map((desc, idx) => {
+                      return (
+                        <div key={"c" + idx} className="showcase__description">
+                          {desc}
+                        </div>
                       );
                     });
+                    els.push(tmp);
                   }
                   break;
                 case "image":
@@ -93,8 +99,10 @@ class ProjectDetail extends Component {
                   if (el.extend) classes += " -isFullWidth";
                   if (el.noBg) classes += " -noBg";
                   els.push(
-                    <div className={classes}>
-                      <img src={el.src} />
+                    <div key={"b" + idx} className={classes}>
+                      <LazyLoad>
+                        <img src={el.src} alt="ollo" />
+                      </LazyLoad>
                     </div>
                   );
                   break;
@@ -103,52 +111,52 @@ class ProjectDetail extends Component {
                     var classThis = "showcase__screenshot";
                     if (img.noBg) classThis += " -noBg";
                     return (
-                      <div className={classThis}>
-                        <img src={img.src} />
+                      <div key={"a" + idx} className={classThis}>
+                        <LazyLoad>
+                          <img src={img.src} alt="ollo" />
+                        </LazyLoad>
                       </div>
                     );
                   });
                   els.push(
-                    <div className="showcase__screenshotWrapper">{imgs}</div>
+                    <div
+                      key={"s" + idx}
+                      className="showcase__screenshotWrapper"
+                    >
+                      {imgs}
+                    </div>
                   );
                   break;
               }
               return els;
             })}
-            {/*<div className="showcase__title">Branding</div>
-            <div className="showcase__screenshot">
-              <div style={{ backgroundColor: "black", height: 350 }}></div>
-            </div>
-            <div className="showcase__title">Website</div>
-            <div className="showcase__description">
-              This is a description of the section to give some context to
-              whatever is going on with this project.
-            </div>
-            <div className="showcase__screenshot -isFullWidth -noBg">
-              <div style={{ backgroundColor: "black", height: 350 }}></div>
-            </div>
-            <div className="showcase__screenshotWrapper">
-              <div className="showcase__screenshot">
-                <div style={{ backgroundColor: "black", height: 350 }}></div>
-                <div className="showcase__caption">This is a caption.</div>
-              </div>
-              <div className="showcase__screenshot">
-                <div style={{ backgroundColor: "black", height: 350 }}></div>
-                <div className="showcase__caption">This is a caption.</div>
-              </div>
-              <div className="showcase__screenshot">
-                <div style={{ backgroundColor: "black", height: 350 }}></div>
-              </div>
-            </div>
-            <div className="showcase__title">Identity</div>
-            <div className="showcase__description">
-              This is a description of the section to give some context to
-              whatever is going on with this project.
-            </div>
-            <div className="showcase__screenshot -isFullWidth">
-              <div style={{ backgroundColor: "black", height: 350 }}></div>
-            </div>*/}
           </div>
+        </div>
+        <div className="nextProject">
+          <a href="javascript:;" className="nextProject__link">
+            <div className="container -expanded">
+              <div className="level is-mobile nextProject__content">
+                <div className="level-left">
+                  <div className="level-item nextProject__metaData">
+                    <div>
+                      <div className="nextProject__label">Next Project:</div>
+                      <div className="nextProject__projectName">
+                        {project.projectName}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="level-right">
+                  <div className="level-item nextProject__icon">
+                    <img src={project.heroIcon} alt="jh" />
+                  </div>
+                  <div className="level-item nextProject__arrow">
+                    <span className="far fa-arrow-right"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
     );

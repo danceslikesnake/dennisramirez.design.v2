@@ -74,6 +74,11 @@
       padding-top: 0;
       padding-bottom: 0;
     }
+
+    img {
+      animation: fadeInImage;
+      animation-duration: 1.3s;
+    }
   }
 
   &__screenshotWrapper {
@@ -97,5 +102,14 @@
         margin-right: 0;
       }
     }
+  }
+}
+
+@keyframes fadeInImage {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

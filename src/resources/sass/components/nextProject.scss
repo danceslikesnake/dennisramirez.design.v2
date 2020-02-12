@@ -1,0 +1,62 @@
+@import "../utilities/all";
+
+.nextProject {
+  padding: 0 16px;
+  @include media_queries($desktop) {
+    padding: 0;
+  }
+
+  &__content {
+    height: 25vh;
+    &.is-mobile .level-right .level-item:not(:last-child) {
+      margin-right: 0;
+    }
+  }
+
+  &__metaData {
+    color: color-shader($color-razzmatazz-pink, 7);
+    @include media_queries($desktop) {
+      font-size: type-scale(1);
+    }
+  }
+
+  &__label {
+    margin-top: -16px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    @include media_queries($desktop) {
+      margin-top: -24px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__projectName {
+    @include sofia-pro-black;
+    color: white;
+    font-size: type-scale(2);
+    letter-spacing: -1.09px;
+    @include media_queries($desktop) {
+      font-size: type-scale(3);
+      letter-spacing: -1.43px;
+    }
+  }
+
+  &__icon {
+    img {
+      height: v-rhythm(6, "px");
+      @include media_queries($desktop) {
+        height: v-rhythm(9, "px");
+      }
+    }
+  }
+
+  &__arrow {
+    @include transition(all 0.3s);
+    font-size: type-scale(3);
+    color: color-shader($color-razzmatazz-pink, 7);
+    @include media_queries($desktop) {
+      width: 0;
+      opacity: 0;
+    }
+  }
+}

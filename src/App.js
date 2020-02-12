@@ -31,11 +31,11 @@ export default class App extends Component {
       fontLoaded: false,
       projects: projects,
       imagesLoaded: false,
-      activeProjectIndex: 1,
+      activeProjectIndex: 0,
       projectsAreTransitioning: false,
       slicesAction: "init",
       transitionDirection: "next",
-      showDetail: true
+      showDetail: false
     };
 
     // check that fonts are loaded

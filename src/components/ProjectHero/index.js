@@ -57,7 +57,7 @@ class ProjectHero extends Component {
 
 ProjectHero.propTypes = {
   project: PropTypes.object,
-  showDetail: PropTypes.bool
+  showDetail: PropTypes.func
 };
 
 export default ProjectHero;
