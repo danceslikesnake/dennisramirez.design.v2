@@ -133,7 +133,9 @@ export default class App extends Component {
         if (ts > te + 5) {
           this.goToNextProject();
         } else if (ts < te - 5) {
-          this.goToPreviousProject();
+          if (this.stats.currentIndex > 0) {
+            this.goToPreviousProject();
+          }
         }
       }
     }
