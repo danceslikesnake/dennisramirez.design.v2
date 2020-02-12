@@ -100,7 +100,7 @@ class ProjectDetail extends Component {
                   if (el.noBg) classes += " -noBg";
                   els.push(
                     <div key={"b" + idx} className={classes}>
-                      <LazyLoad>
+                      <LazyLoad height={"50%"} offset={208}>
                         <img src={el.src} alt="ollo" />
                       </LazyLoad>
                     </div>
@@ -112,7 +112,7 @@ class ProjectDetail extends Component {
                     if (img.noBg) classThis += " -noBg";
                     return (
                       <div key={"a" + idx} className={classThis}>
-                        <LazyLoad>
+                        <LazyLoad height={"50%"} offset={208}>
                           <img src={img.src} alt="ollo" />
                         </LazyLoad>
                       </div>
