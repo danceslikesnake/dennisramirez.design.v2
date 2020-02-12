@@ -252,7 +252,8 @@ export default class App extends Component {
         {this.state.fontLoaded === false ||
         this.state.imagesLoaded === false ? (
           <div className="preloader-overlay">
-            <i className="far fa-spinner fa-spin" />
+            <i className="far fa-spinner fa-spin" style={{ color: "white" }} />{" "}
+            loading...
           </div>
         ) : null}
         <div className="gridLines -outer" />
