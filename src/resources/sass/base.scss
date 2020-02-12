@@ -27,6 +27,10 @@ body {
   overflow: initial;
 }
 
+.-stopTouchReload {
+  touch-action: none;
+}
+
 // for styling unstyled text
 html body {
   font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;

@@ -165,6 +165,10 @@ export default class App extends Component {
             activeProjectIndex: currentIndex + 1
           },
           () => {
+            if (currentIndex + 1 > 0) {
+              if (!document.body.classList.contains("-stopTouchReload"))
+                document.body.classList.add("-stopTouchReload");
+            }
             this.setState({
               slicesAction: "hide"
             });
@@ -177,6 +181,10 @@ export default class App extends Component {
             activeProjectIndex: currentIndex - 1
           },
           () => {
+            if (currentIndex - 1 == 0) {
+              if (document.body.classList.contains("-stopTouchReload"))
+                document.body.classList.remove("-stopTouchReload");
+            }
             this.setState({
               slicesAction: "hidePrev"
             });
@@ -226,6 +234,7 @@ export default class App extends Component {
 
   showDetail = () => {
     document.body.classList.add("-unFreezeBody");
+    document.body.classList.remove("-stopTouchReload");
     this.setState({
       showDetail: true
     });
