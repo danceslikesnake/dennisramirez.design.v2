@@ -131,7 +131,9 @@ export default class App extends Component {
       if (!this.state.projectsAreTransitioning) {
         let te = event.changedTouches[0].clientY;
         if (ts > te + 5) {
-          this.goToNextProject();
+          let totalProjects = this.state.projects.length - 1;
+          if (this.state.activeProjectIndex < totalProjects)
+            this.goToNextProject();
         } else if (ts < te - 5) {
           if (this.state.activeProjectIndex > 0) {
             this.goToPreviousProject();
