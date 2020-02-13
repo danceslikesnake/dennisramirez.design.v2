@@ -90,6 +90,7 @@
     border: none;
     padding: 24px;
   }
+
   &__hireMe {
     @include sofia-pro-black;
     @include transition(all 0.2s);
@@ -126,6 +127,24 @@
 
     span {
       margin-left: v-rhythm(1, "px");
+    }
+
+    &.-isButton {
+      background: transparent;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      outline: none;
+      cursor: pointer;
+      margin-left: 32px;
+      @include media_queries($desktop) {
+        margin-left: 24px;
+      }
+
+      span {
+        margin-right: 8px;
+        margin-left: 0;
+      }
     }
   }
 }

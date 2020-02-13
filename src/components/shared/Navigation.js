@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Navigation = props => (
   <nav className="mainNavigation">
@@ -6,7 +7,18 @@ const Navigation = props => (
       <ul className="level is-mobile">
         <li className="level-left">
           <div className="level-item">
-            <span className="mainNavigation__myName">Dennis Ramirez</span>
+            {props.detailIsActive ? (
+              <button
+                className="mainNavigation__hireMe -isButton"
+                onClick={() => {
+                  props.hideDetail();
+                }}
+              >
+                <span className="far fa-arrow-left"></span> Back
+              </button>
+            ) : (
+              <span className="mainNavigation__myName">Dennis Ramirez</span>
+            )}
           </div>
         </li>
         <li className="level-right">
@@ -31,5 +43,10 @@ const Navigation = props => (
     </div>
   </nav>
 );
+
+Navigation.propTypes = {
+  detailIsActive: PropTypes.bool,
+  hideDetail: PropTypes.func
+};
 
 export default Navigation;

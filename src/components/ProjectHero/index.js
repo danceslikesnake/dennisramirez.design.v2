@@ -23,6 +23,16 @@ class ProjectHero extends Component {
       stagger: {
         from: "end",
         amount: 0.15
+      },
+      onReverseComplete: () => {
+        this.setState(
+          {
+            isAnimating: false
+          },
+          () => {
+            this.props.projectHeroCallback("clearFinish");
+          }
+        );
       }
     });
 
@@ -38,7 +48,14 @@ class ProjectHero extends Component {
       ease: "expo.in",
       delay: 0.2,
       onComplete: () => {
-        this.props.projectHeroCallback("obscureFinish");
+        this.setState(
+          {
+            isAnimating: false
+          },
+          () => {
+            this.props.projectHeroCallback("obscureFinish");
+          }
+        );
       }
     });
   }
@@ -60,6 +77,16 @@ class ProjectHero extends Component {
             );
             break;
           case "clear":
+            this.setState(
+              {
+                isAnimating: true
+              },
+              () => {
+                this.detailBarReveal.reverse();
+                this.coverFade.reverse();
+                this.actionHide.reverse();
+              }
+            );
             break;
           default:
             break;

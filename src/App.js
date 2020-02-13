@@ -37,7 +37,8 @@ export default class App extends Component {
       projectHeroAction: "init",
       transitionDirection: "next",
       detailIsTransitioning: false,
-      showDetail: false
+      showDetail: false,
+      detailAction: "init"
     };
 
     // check that fonts are loaded
@@ -216,10 +217,37 @@ export default class App extends Component {
   projectHeroCallback = type => {
     switch (type) {
       case "obscureFinish":
-        console.log("oi");
         this.setState({
+          detailIsTransitioning: false,
           showDetail: true
         });
+        break;
+      case "clearFinish":
+        this.setState({
+          detailIsTransitioning: false,
+          showDetail: false
+        });
+        break;
+      default:
+        break;
+    }
+  };
+
+  detailCallback = type => {
+    switch (type) {
+      case "clearDetailFinish":
+        this.setState(
+          {
+            detailIsTransitioning: true,
+            showDetail: false,
+            detailAction: "init"
+          },
+          () => {
+            this.setState({
+              projectHeroAction: "clear"
+            });
+          }
+        );
         break;
       default:
         break;
@@ -263,6 +291,14 @@ export default class App extends Component {
     });
   };
 
+  hideDetail = () => {
+    document.body.classList.remove("-unFreezeBody");
+    document.body.classList.add("-stopTouchReload");
+    this.setState({
+      detailAction: "clearDetail"
+    });
+  };
+
   render() {
     const { projects, activeProjectIndex } = this.state;
     const activeProject = projects[activeProjectIndex];
@@ -276,13 +312,15 @@ export default class App extends Component {
           </div>
         ) : null}
         <div className="gridLines -outer" />
-
         <div className="gridLines -inner" />
         <GridSlices
           sliceAction={this.state.slicesAction}
           gridSlicesCallback={this.gridSlicesCallback}
         />
-        <Navigation />
+        <Navigation
+          detailIsActive={this.state.showDetail}
+          hideDetail={this.hideDetail}
+        />
         {activeProject.id === "home" ? (
           <HomeHero
             project={activeProject}
@@ -297,7 +335,13 @@ export default class App extends Component {
               projectHeroAction={this.state.projectHeroAction}
               projectHeroCallback={this.projectHeroCallback}
             />
-            {this.state.showDetail && <ProjectDetail project={activeProject} />}
+            {this.state.showDetail && (
+              <ProjectDetail
+                project={activeProject}
+                detailAction={this.state.detailAction}
+                detailCallback={this.detailCallback}
+              />
+            )}
           </>
         )}
       </>

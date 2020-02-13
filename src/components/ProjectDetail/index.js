@@ -2,8 +2,60 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ReactHtmlParser from "react-html-parser";
 import LazyLoad from "react-lazyload";
+import { gsap } from "gsap";
 
 class ProjectDetail extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isAnimating: false
+    };
+
+    this.revealText = gsap.timeline({ paused: false });
+  }
+
+  componentDidMount() {
+    this.revealText.from(".projectMarquee", {
+      marginTop: 16,
+      opacity: 0,
+      duration: 0.5,
+      onReverseComplete: () => {
+        this.setState(
+          {
+            isAnimating: false
+          },
+          () => {
+            console.log("on reverse", this.state);
+            this.props.detailCallback("clearDetailFinish");
+          }
+        );
+      }
+    });
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log("component did update", this.state);
+    if (this.props.detailAction !== prevProps.detailAction) {
+      if (!this.state.isAnimating) {
+        console.log("AY BAIB");
+        switch (this.props.detailAction) {
+          case "clearDetail":
+            this.setState(
+              {
+                isAnimating: true
+              },
+              () => {
+                this.revealText.reverse();
+              }
+            );
+            break;
+          default:
+            break;
+        }
+      }
+    }
+  }
+
   render() {
     const { project } = this.props;
     return (
@@ -164,7 +216,8 @@ class ProjectDetail extends Component {
 }
 
 ProjectDetail.propTypes = {
-  project: PropTypes.object
+  project: PropTypes.object,
+  detailCallback: PropTypes.func
 };
 
 export default ProjectDetail;
