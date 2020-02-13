@@ -71,7 +71,7 @@
     &.-isFullWidth {
       width: 100vw;
       position: relative;
-      margin-left: -16px;
+      margin-left: -32px;
       @include media_queries($until: $desktop) {
         padding-left: 0;
         padding-right: 0;
@@ -84,9 +84,7 @@
         margin-right: -50vw;
       }
       img {
-        @include media_queries($desktop) {
-          width: 100%;
-        }
+        width: 100%;
       }
     }
 
