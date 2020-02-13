@@ -84,7 +84,9 @@
         margin-right: -50vw;
       }
       img {
-        width: 100%;
+        @include media_queries($desktop) {
+          width: 100%;
+        }
       }
     }
 
