@@ -34,7 +34,9 @@ export default class App extends Component {
       activeProjectIndex: 0,
       projectsAreTransitioning: false,
       slicesAction: "init",
+      projectHeroAction: "init",
       transitionDirection: "next",
+      detailIsTransitioning: false,
       showDetail: false
     };
 
@@ -90,7 +92,7 @@ export default class App extends Component {
 
         //If the user scrolled up, it goes to previous slide, otherwise - to next slide
         if (!this.state.projectsAreTransitioning) {
-          window.setTransitioning();
+          window.setTransitioning(true);
           if (delta < -1) {
             if (currentIndex < totalProjects) {
               this.setState(
@@ -114,7 +116,7 @@ export default class App extends Component {
               );
             }
           } else {
-            window.setTransitioning();
+            window.setTransitioning(false);
             if (window.animIsPaused) window.pauseLogoAnimation(false);
           }
         }
@@ -199,10 +201,24 @@ export default class App extends Component {
         break;
       case "hidePrev":
       case "hide":
-        window.setTransitioning();
-        window.pauseLogoAnimation(false);
+        window.setTransitioning(false);
+        if (this.state.activeProjectIndex > 0) window.pauseLogoAnimation(true);
+        else window.pauseLogoAnimation(false);
         this.setState({
           projectsAreTransitioning: false
+        });
+        break;
+      default:
+        break;
+    }
+  };
+
+  projectHeroCallback = type => {
+    switch (type) {
+      case "obscureFinish":
+        console.log("oi");
+        this.setState({
+          showDetail: true
         });
         break;
       default:
@@ -231,7 +247,7 @@ export default class App extends Component {
           projectsAreTransitioning: true
         },
         () => {
-          window.setTransitioning();
+          window.setTransitioning(true);
           this.goToNextProject();
         }
       );
@@ -242,7 +258,8 @@ export default class App extends Component {
     document.body.classList.add("-unFreezeBody");
     document.body.classList.remove("-stopTouchReload");
     this.setState({
-      showDetail: true
+      detailIsTransitioning: true,
+      projectHeroAction: "obscure"
     });
   };
 
@@ -277,6 +294,8 @@ export default class App extends Component {
               project={activeProject}
               detailIsVisible={this.state.showDetail}
               showDetail={this.showDetail}
+              projectHeroAction={this.state.projectHeroAction}
+              projectHeroCallback={this.projectHeroCallback}
             />
             {this.state.showDetail && <ProjectDetail project={activeProject} />}
           </>

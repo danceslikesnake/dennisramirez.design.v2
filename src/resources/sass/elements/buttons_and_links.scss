@@ -19,9 +19,12 @@
     @include positionAbsolute($top: 8px, $left: 8px);
     @include pseudos;
     width: 56px;
-    height: 56px;
+    height: 40px;
     background: rgba(black, 0.3);
     opacity: 0;
+    @include media_queries($desktop) {
+      height: 56px;
+    }
   }
   &:hover {
     color: white;
@@ -33,11 +36,15 @@
   @include media_queries($desktop) {
     font-size: type-scale(1);
     line-height: v-rhythm(9, "px");
+    padding: 0 v-rhythm(3, "px");
   }
 
   &__icon {
     @include positionAbsolute($right: v-rhythm(3, "px"), $top: 0);
     font-size: type-scale(1);
+    @include media_queries($desktop) {
+      right: v-rhythm(3, "px");
+    }
   }
 
   &.-is-button {
@@ -88,16 +95,17 @@
     @include transition(all 0.2s);
     color: white;
     display: inline-block;
-    margin-right: v-rhythm(5, "px");
+    margin-right: v-rhythm(4, "px");
     border-bottom: 8px solid $color-razzmatazz-pink;
     font-size: type-scale(1, $dense-font-size);
     letter-spacing: -0.79px;
     line-height: v-rhythm(6, "px");
-    padding: 0 v-rhythm(2, "px");
+    padding: 0 v-rhythm(1, "px");
     position: relative;
     @include media_queries($desktop) {
       margin-right: v-rhythm(3, "px");
       font-size: type-scale(2);
+      padding: 0 v-rhythm(2, "px");
     }
     &:before {
       @include pseudos;

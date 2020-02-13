@@ -783,8 +783,8 @@ function setup(callback) {
   reset(callback);
 }
 
-function setTransitioning() {
-  isTransitioning = !isTransitioning;
+function setTransitioning(bool) {
+  isTransitioning = bool;
 }
 
 function destroy() {

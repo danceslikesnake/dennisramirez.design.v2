@@ -32,7 +32,7 @@ class HomeHero extends Component {
                 alt="Homepage Logo Mask"
               />
             </div>
-            <div className="projectHero__content" style={{ zIndex: 6 }}>
+            <div className="projectHero__content">
               <div className="container -expanded">
                 <h1 className="projectHero__homeHeadline">
                   {ReactHtmlParser(project.headline)}

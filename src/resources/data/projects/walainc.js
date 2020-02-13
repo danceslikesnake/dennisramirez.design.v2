@@ -4,7 +4,7 @@ export const walainc = {
   heroIcon: require("../../img/walainc-logo.svg"),
   heroIconBlack: require("../../img/walainc-logo-black.svg"),
   projectName: "Wala, Inc.",
-  heroSkillSet: "Web, Print, Branding",
+  heroSkillSet: "Web, Print, Identity",
   tagline:
     "A fintech company that served the underbanked and unbanked in Africa.",
   externalLinks: [

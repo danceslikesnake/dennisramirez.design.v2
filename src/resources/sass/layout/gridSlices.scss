@@ -12,40 +12,61 @@
     );
 
     @include positionFixed($top: 0, $bottom: 0);
-    @include set-z-index("sub-navigation");
+    @include set-z-index("super-content");
     background: $color-razzmatazz-pink;
     height: 100%;
 
     &.-one {
       left: 0;
-      width: $outer-slice-width;
+      width: 16px;
+      @include media_queries($desktop) {
+        width: $outer-slice-width;
+      }
     }
     &.-two {
       left: 24px;
       width: $flanking-slice-width;
+      @include media_queries($until: $desktop) {
+        display: none;
+      }
     }
     &.-three {
-      left: calc(#{$outer-slice-width} + #{$flanking-slice-width});
-      width: #{$middle-slice-half};
+      left: 16px;
+      width: calc(50% - 16px);
+      @include media_queries($desktop) {
+        left: calc(#{$outer-slice-width} + #{$flanking-slice-width});
+        width: #{$middle-slice-half};
+      }
     }
     &.-four {
-      left: calc(
-        #{$outer-slice-width} + #{$flanking-slice-width} + #{$middle-slice-half}
-      );
-      width: #{$middle-slice-half};
+      left: 50%;
+      width: calc(50% - 16px);
+      @include media_queries($desktop) {
+        left: calc(
+          #{$outer-slice-width} + #{$flanking-slice-width} + #{$middle-slice-half}
+        );
+        width: #{$middle-slice-half};
+      }
     }
     &.-five {
       left: calc(
         #{$outer-slice-width} + #{$flanking-slice-width} + #{$middle-slice-width}
       );
       width: $flanking-slice-width;
+      @include media_queries($until: $desktop) {
+        display: none;
+      }
     }
     &.-six {
-      left: calc(
-        #{$outer-slice-width} + #{$flanking-slice-width} + #{$middle-slice-width} +
-          #{$flanking-slice-width}
-      );
-      width: $outer-slice-width;
+      left: calc(100% - 16px);
+      width: 16px;
+      @include media_queries($desktop) {
+        left: calc(
+          #{$outer-slice-width} + #{$flanking-slice-width} + #{$middle-slice-width} +
+            #{$flanking-slice-width}
+        );
+        width: $outer-slice-width;
+      }
     }
   }
 }
