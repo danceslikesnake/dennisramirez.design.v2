@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import ReactHtmlParser from "react-html-parser";
 import LazyLoad from "react-lazyload";
 import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollToPlugin);
 
 class ProjectDetail extends Component {
   constructor(props) {
@@ -12,6 +15,7 @@ class ProjectDetail extends Component {
     };
 
     this.revealText = gsap.timeline({ paused: false });
+    this.scrollToTop = gsap.timeline({ paused: true });
   }
 
   componentDidMount() {
@@ -25,19 +29,22 @@ class ProjectDetail extends Component {
             isAnimating: false
           },
           () => {
-            console.log("on reverse", this.state);
             this.props.detailCallback("clearDetailFinish");
           }
         );
       }
     });
+
+    this.scrollToTop.to(window, {
+      scrollTo: 0,
+      duration: 1,
+      ease: "expo.inOut"
+    });
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log("component did update", this.state);
     if (this.props.detailAction !== prevProps.detailAction) {
       if (!this.state.isAnimating) {
-        console.log("AY BAIB");
         switch (this.props.detailAction) {
           case "clearDetail":
             this.setState(
@@ -152,7 +159,7 @@ class ProjectDetail extends Component {
                   if (el.noBg) classes += " -noBg";
                   els.push(
                     <div key={"b" + idx} className={classes}>
-                      <LazyLoad height={"50%"} offset={208}>
+                      <LazyLoad height={540} offset={208}>
                         <img src={el.src} alt="ollo" />
                       </LazyLoad>
                     </div>
@@ -164,7 +171,7 @@ class ProjectDetail extends Component {
                     if (img.noBg) classThis += " -noBg";
                     return (
                       <div key={"a" + idx} className={classThis}>
-                        <LazyLoad height={"50%"} offset={208}>
+                        <LazyLoad height={540} offset={208}>
                           <img src={img.src} alt="ollo" />
                         </LazyLoad>
                       </div>
@@ -184,31 +191,15 @@ class ProjectDetail extends Component {
             })}
           </div>
         </div>
-        <div className="nextProject">
-          <a href="javascript:;" className="nextProject__link">
-            <div className="container -expanded">
-              <div className="level is-mobile nextProject__content">
-                <div className="level-left">
-                  <div className="level-item nextProject__metaData">
-                    <div>
-                      <div className="nextProject__label">Next Project:</div>
-                      <div className="nextProject__projectName">
-                        {project.projectName}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="level-right">
-                  <div className="level-item nextProject__icon">
-                    <img src={project.heroIcon} alt="jh" />
-                  </div>
-                  <div className="level-item nextProject__arrow">
-                    <span className="far fa-arrow-right"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
+        <div className="scrollToTop">
+          <button
+            className="scrollToTop__button"
+            onClick={() => {
+              this.scrollToTop.seek(0).play();
+            }}
+          >
+            Back to Top <span className="far fa-arrow-circle-up"></span>
+          </button>
         </div>
       </div>
     );

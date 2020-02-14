@@ -14,6 +14,8 @@
     font-size: type-scale(1, $dense-font-size);
     padding-left: 32px;
     margin-top: -8px;
+    display: block;
+    height: 100%;
     @include media_queries($desktop) {
       font-size: type-scale(2);
       padding-left: 24px;

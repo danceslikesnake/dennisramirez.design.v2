@@ -79,10 +79,6 @@ export default class App extends Component {
 
   handleScroll = debounce(event => {
     if (!this.state.showDetail) {
-      /*console.log("scroll detected");
-      console.log("window anim is paused", window.animIsPaused);
-      console.log("window is transitioning", window.isTransitioning);
-      console.log("state is transitioning", this.state.projectsAreTransitioning);*/
       if (!window.animIsPaused) window.pauseLogoAnimation(true);
       let currentIndex = this.state.activeProjectIndex;
       let totalProjects = this.state.projects.length - 1;

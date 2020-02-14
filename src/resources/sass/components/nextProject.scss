@@ -2,6 +2,7 @@
 
 .nextProject {
   padding: 0 16px;
+  background: $color-razzmatazz-pink;
   @include media_queries($desktop) {
     padding: 0;
   }
@@ -21,12 +22,14 @@
   }
 
   &__label {
+    @include sofia-pro-black;
     margin-top: -16px;
     margin-bottom: 16px;
     text-transform: uppercase;
+    font-size: 16px;
     @include media_queries($desktop) {
       margin-top: -24px;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
     }
   }
 
@@ -51,10 +54,12 @@
   }
 
   &__arrow {
-    @include transition(all 0.3s);
-    font-size: type-scale(3);
-    color: color-shader($color-razzmatazz-pink, 7);
+    display: none;
     @include media_queries($desktop) {
+      @include transition(all 0.3s);
+      display: flex;
+      font-size: type-scale(3);
+      color: color-shader($color-razzmatazz-pink, 7);
       width: 0;
       opacity: 0;
     }

@@ -146,6 +146,13 @@
         margin-left: 0;
       }
     }
+
+    &.-isSocial {
+      margin-right: 0;
+      span {
+        margin-left: 0;
+      }
+    }
   }
 }
 
@@ -170,6 +177,50 @@
         width: 56px;
         opacity: 1;
       }
+    }
+  }
+}
+
+.scrollToTop {
+  &__button {
+    @include button-clean-up;
+    @include sofia-pro-black;
+    @include transition(all 0.3);
+    background: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    color: white;
+    display: inline-block;
+    border-bottom: 8px solid $color-razzmatazz-pink;
+    font-size: type-scale(1, $dense-font-size);
+    letter-spacing: -0.79px;
+    line-height: v-rhythm(6, "px");
+    padding: 0 v-rhythm(1, "px");
+    position: relative;
+    @include media_queries($desktop) {
+      font-size: type-scale(2);
+      padding: 0 v-rhythm(2, "px");
+    }
+    &:before {
+      @include pseudos;
+      @include transition(width 0.2s);
+      @include positionAbsolute($top: 0, $left: 0);
+      @include set-z-index("body-backgrounds");
+      width: 0;
+      height: v-rhythm(6, "px");
+      background: $color-razzmatazz-pink;
+    }
+    &:hover {
+      color: white;
+      border-bottom-color: rgb(186, 0, 83);
+      &:before {
+        width: 100%;
+      }
+    }
+
+    span {
+      margin-left: 8px;
     }
   }
 }
