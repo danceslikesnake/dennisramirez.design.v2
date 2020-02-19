@@ -18,48 +18,110 @@ export const newwestindustries = {
   year: "2019",
   description:
     "As part of the ongoing campaign for STARSET's album Divisions, we" +
-    ' created a recruitment website for the Big-Brother-like antagonist of STARSET\'s over-arching narrative.</p><p>Fans take a set of tests to see if they qualify for service in the New West. If they are rejected, the Rebels "hack" into the website and welcome them into their fold.',
+    " created a recruitment website for the Big-Brother-like antagonist of" +
+    " STARSET's over-arching narrative. Fans take a personality test that" +
+    " either accepts them in to the New West, or rejects them to the Rebels." +
+    " with future marketing material tailored to each result.",
   showcase: [
     {
+      type: "image",
+      src: require("../../img/showcase/newwest/homepage-01.jpg")
+    },
+    {
       type: "text",
-      headline: "Branding",
+      headline: "Recruitment Form"
+    },
+    {
+      type: "image",
+      src: require("../../img/showcase/newwest/recruitment-form-01.jpg")
+    },
+    {
+      type: "image",
+      src: require("../../img/showcase/newwest/recruitment-form-02.jpg")
+    },
+    {
+      type: "image",
+      src: require("../../img/showcase/newwest/recruitment-form-03.jpg")
+    },
+    {
+      type: "text",
+      headline: "ARCHITECTURE Emotional A.I.",
       description: [
-        "This is a description of the section to give some context to whatever is going on with this project."
+        "A user's favorite songs are analyzed by the <strong>Spotify API</strong>" +
+          " and mapped" +
+          " across seven dimensions. The result is normalized into an emotional" +
+          " spectrum" +
+          " here" +
+          " and explained in detail after the test is completed."
       ]
     },
     {
       type: "image",
-      extend: true,
-      src: require("../../img/showcase/alchemyui/feed.jpg")
+      src: require("../../img/showcase/newwest/recruitment-form-04.jpg")
+    },
+    {
+      type: "text",
+      headline: "Welcome to the New West"
+    },
+    {
+      type: "image",
+      src: require("../../img/showcase/newwest/recruitment-form-05.jpg")
+    },
+    {
+      type: "text",
+      headline: "The Rebels Intervene",
+      description: [
+        "If a user is rejected by the New West, the Rebels hack into the" +
+          " interface, offering the user a chance to join a different faction."
+      ]
+    },
+    {
+      type: "video",
+      src: require("../../img/showcase/newwest/rebel_transition.mp4"),
+      poster: require("../../img/showcase/newwest/rebels-poster-01.jpg")
+    },
+    {
+      type: "image",
+      src: require("../../img/showcase/newwest/rebels-01.jpg")
+    },
+    {
+      type: "text",
+      headline: "Mobile Screenshots"
     },
     {
       type: "imageGroup",
       srcs: [
         {
-          src: require("../../img/showcase/alchemyui/phone01temp.png"),
-          noBg: true,
-          caption: "Profile Page"
+          src: require("../../img/showcase/newwest/mobile-01.png"),
+          phoneMask: true,
+          noBg: true
         },
         {
-          src: require("../../img/showcase/alchemyui/phone02temp.png"),
-          noBg: true,
-          caption: "Earn Page"
+          src: require("../../img/showcase/newwest/mobile-02.png"),
+          phoneMask: true,
+          noBg: true
         },
         {
-          src: require("../../img/showcase/alchemyui/phone01temp.png"),
-          noBg: true,
-          caption: "Profile Page"
+          src: require("../../img/showcase/newwest/mobile-03.png"),
+          phoneMask: true,
+          noBg: true
+        },
+        {
+          src: require("../../img/showcase/newwest/mobile-04.png"),
+          phoneMask: true,
+          noBg: true
+        },
+        {
+          src: require("../../img/showcase/newwest/mobile-05.png"),
+          phoneMask: true,
+          noBg: true
+        },
+        {
+          src: require("../../img/showcase/newwest/mobile-06.png"),
+          phoneMask: true,
+          noBg: true
         }
       ]
-    },
-    {
-      type: "text",
-      headline: "Branding"
-    },
-    {
-      type: "image",
-      extend: true,
-      src: require("../../img/showcase/alchemyui/connect.jpg")
     }
   ]
 };

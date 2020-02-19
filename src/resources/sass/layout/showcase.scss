@@ -48,6 +48,10 @@
       margin-bottom: v-rhythm(6, "px");
       padding: 0 v-rhythm(3, "px");
     }
+
+    strong {
+      color: white;
+    }
   }
 
   &__caption {
@@ -61,6 +65,7 @@
   &__screenshot {
     padding: v-rhythm(3, "px");
     background: color-shader($color-deep-purple, -2);
+    position: relative;
     &:not(:last-child) {
       margin-bottom: v-rhythm(4, "px");
       @include media_queries($desktop) {
@@ -92,6 +97,10 @@
       background: transparent;
       padding-top: 0;
       padding-bottom: 0;
+
+      .showcase__phoneMask {
+        top: 0;
+      }
     }
 
     img {
@@ -115,9 +124,7 @@
     .showcase__screenshot {
       width: 50%;
       @include media_queries($desktop) {
-        margin: 0 16px;
-        flex: 1;
-        width: auto;
+        width: calc(100% / 3);
       }
       &:first-child {
         margin-left: 0;
@@ -126,6 +133,14 @@
         margin-right: 0;
       }
     }
+  }
+
+  &__phoneMask {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    right: 23px;
+    z-index: 5;
   }
 }
 

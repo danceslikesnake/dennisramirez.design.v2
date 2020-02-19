@@ -145,23 +145,49 @@ class ProjectDetail extends Component {
                     var tmp = el.description.map((desc, idx) => {
                       return (
                         <div key={"c" + idx} className="showcase__description">
-                          {desc}
+                          {ReactHtmlParser(desc)}
                         </div>
                       );
                     });
                     els.push(tmp);
                   }
                   break;
+                case "video":
+                  var classes = "showcase__screenshot";
+
+                  if (el.extend) classes += " -isFullWidth";
+                  if (el.noBg) classes += " -noBg";
+                  var caption = el.caption ? (
+                    <div className="showcase__caption">{el.caption}</div>
+                  ) : null;
+                  els.push(
+                    <div key={"b" + idx} className={classes}>
+                      <video
+                        width="100%"
+                        height="auto"
+                        controls
+                        poster={el.poster}
+                      >
+                        <source src={el.src} type="video/mp4" />
+                      </video>
+                      {caption}
+                    </div>
+                  );
+                  break;
                 case "image":
                   var classes = "showcase__screenshot";
 
                   if (el.extend) classes += " -isFullWidth";
                   if (el.noBg) classes += " -noBg";
+                  var caption = el.caption ? (
+                    <div className="showcase__caption">{el.caption}</div>
+                  ) : null;
                   els.push(
                     <div key={"b" + idx} className={classes}>
                       <LazyLoad height={540} offset={208}>
                         <img src={el.src} alt="ollo" />
                       </LazyLoad>
+                      {caption}
                     </div>
                   );
                   break;
@@ -169,11 +195,24 @@ class ProjectDetail extends Component {
                   var imgs = el.srcs.map((img, idx) => {
                     var classThis = "showcase__screenshot";
                     if (img.noBg) classThis += " -noBg";
+                    let phoneMask = img.phoneMask ? (
+                      <div className="showcase__phoneMask">
+                        <img
+                          alt="phone mask"
+                          src={require("../../resources/img/showcase/Phone Clay.png")}
+                        />
+                      </div>
+                    ) : null;
+                    var caption = img.caption ? (
+                      <div className="showcase__caption">{img.caption}</div>
+                    ) : null;
                     return (
                       <div key={"a" + idx} className={classThis}>
+                        {phoneMask}
                         <LazyLoad height={540} offset={208}>
                           <img src={img.src} alt="ollo" />
                         </LazyLoad>
+                        {caption}
                       </div>
                     );
                   });
