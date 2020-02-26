@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ReactHtmlParser from "react-html-parser";
-import LazyLoad from "react-lazyload";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+import Metadata from "./Metadata";
+import ScreenshotImage from "./ScreenshotImage";
+import ScreenshotVideo from "./ScreenshotVideo";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -96,37 +99,13 @@ class ProjectDetail extends Component {
           </div>
         </div>
         <div className="projectMetadata">
-          <div className="container -expanded">
-            <div className="columns projectMetadata__lists">
-              <div className="column">
-                <div className="columns is-mobile">
-                  <div className="column">
-                    <ul className="projectMetadata__list">
-                      <li className="projectMetadata__listLabel">Client</li>
-                      <li>{project.client}</li>
-                    </ul>
-                    <ul className="projectMetadata__list">
-                      <li className="projectMetadata__listLabel">Tools</li>
-                      <li>{project.tools}</li>
-                    </ul>
-                  </div>
-                  <div className="column">
-                    <ul className="projectMetadata__list">
-                      <li className="projectMetadata__listLabel">Skills</li>
-                      <li>{project.skills}</li>
-                    </ul>
-                    <ul className="projectMetadata__list">
-                      <li className="projectMetadata__listLabel">Year</li>
-                      <li>{project.year}</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="column">
-                <p>{ReactHtmlParser(project.description)}</p>
-              </div>
-            </div>
-          </div>
+          <Metadata
+            client={project.client}
+            tools={project.tools}
+            skills={project.skills}
+            year={project.year}
+            description={project.description}
+          />
         </div>
         <div className="showcase">
           <div className="container -expanded">
@@ -153,72 +132,45 @@ class ProjectDetail extends Component {
                   }
                   break;
                 case "video":
-                  var classes = "showcase__screenshot";
-
-                  if (el.extend) classes += " -isFullWidth";
-                  if (el.noBg) classes += " -noBg";
-                  var caption = el.caption ? (
-                    <div className="showcase__caption">{el.caption}</div>
-                  ) : null;
                   els.push(
-                    <div key={"b" + idx} className={classes}>
-                      <video
-                        width="100%"
-                        height="auto"
-                        controls
-                        poster={el.poster}
-                      >
-                        <source src={el.src} type="video/mp4" />
-                      </video>
-                      {caption}
-                    </div>
+                    <ScreenshotVideo
+                      key={"video_" + idx}
+                      caption={el.caption}
+                      src={el.src}
+                      poster={el.poster}
+                      extend={el.extend}
+                      noBg={el.noBg}
+                    />
                   );
                   break;
                 case "image":
-                  var classes = "showcase__screenshot";
-
-                  if (el.extend) classes += " -isFullWidth";
-                  if (el.noBg) classes += " -noBg";
-                  var caption = el.caption ? (
-                    <div className="showcase__caption">{el.caption}</div>
-                  ) : null;
                   els.push(
-                    <div key={"b" + idx} className={classes}>
-                      <LazyLoad height={540} offset={208}>
-                        <img src={el.src} alt="ollo" />
-                      </LazyLoad>
-                      {caption}
-                    </div>
+                    <ScreenshotImage
+                      key={"b" + idx}
+                      caption={el.caption}
+                      src={el.src}
+                      addPhoneMask={el.phoneMask}
+                      extend={el.extend}
+                      noBg={el.noBg}
+                    />
                   );
                   break;
                 case "imageGroup":
                   var imgs = el.srcs.map((img, idx) => {
-                    var classThis = "showcase__screenshot";
-                    if (img.noBg) classThis += " -noBg";
-                    let phoneMask = img.phoneMask ? (
-                      <div className="showcase__phoneMask">
-                        <img
-                          alt="phone mask"
-                          src={require("../../resources/img/showcase/Phone Clay.png")}
-                        />
-                      </div>
-                    ) : null;
-                    var caption = img.caption ? (
-                      <div className="showcase__caption">{img.caption}</div>
-                    ) : null;
                     return (
-                      <div key={"a" + idx} className={classThis}>
-                        {phoneMask}
-                        <LazyLoad height={540} offset={208}>
-                          <img src={img.src} alt="ollo" />
-                        </LazyLoad>
-                        {caption}
-                      </div>
+                      <ScreenshotImage
+                        key={"group_image_" + idx}
+                        caption={img.caption}
+                        src={img.src}
+                        addPhoneMask={img.phoneMask}
+                        extend={img.extend}
+                        noBg={img.noBg}
+                      />
                     );
                   });
                   els.push(
                     <div
-                      key={"s" + idx}
+                      key={"groupWrapper_" + idx}
                       className="showcase__screenshotWrapper"
                     >
                       {imgs}

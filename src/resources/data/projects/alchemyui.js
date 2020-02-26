@@ -29,44 +29,88 @@ export const alchemyui = {
   showcase: [
     {
       type: "text",
-      headline: "Branding",
-      description: [
-        "This is a description of the section to give some context to whatever is going on with this project."
-      ]
-    },
-    {
-      type: "image",
-      extend: true,
-      src: require("../../img/showcase/alchemyui/feed.jpg")
+      headline: "Main Screens"
     },
     {
       type: "imageGroup",
       srcs: [
         {
-          src: require("../../img/showcase/alchemyui/phone01temp.png"),
-          noBg: true,
-          caption: "Profile Page"
+          src: require("../../img/showcase/alchemyui/main-screens-01.png"),
+          noBg: true
         },
         {
-          src: require("../../img/showcase/alchemyui/phone02temp.png"),
-          noBg: true,
-          caption: "Earn Page"
+          src: require("../../img/showcase/alchemyui/main-screens-02.png"),
+          noBg: true
         },
         {
-          src: require("../../img/showcase/alchemyui/phone01temp.png"),
-          noBg: true,
-          caption: "Profile Page"
+          src: require("../../img/showcase/alchemyui/main-screens-03.png"),
+          noBg: true
+        },
+        {
+          src: require("../../img/showcase/alchemyui/main-screens-04.png"),
+          noBg: true
+        },
+        {
+          src: require("../../img/showcase/alchemyui/main-screens-05.png"),
+          noBg: true
         }
       ]
     },
     {
       type: "text",
-      headline: "Branding"
+      headline: "Earn"
     },
     {
       type: "image",
-      extend: true,
-      src: require("../../img/showcase/alchemyui/connect.jpg")
+      src: require("../../img/showcase/alchemyui/earn.png"),
+      extend: true
+    },
+    {
+      type: "text",
+      headline: "Buying Dala"
+    },
+    {
+      type: "imageGroup",
+      srcs: [
+        {
+          src: require("../../img/showcase/alchemyui/main-screens-06.png"),
+          noBg: true
+        },
+        {
+          src: require("../../img/showcase/alchemyui/buy-dala-01.png"),
+          noBg: true
+        },
+        {
+          src: require("../../img/showcase/alchemyui/buy-dala-02.png"),
+          noBg: true
+        },
+        {
+          src: require("../../img/showcase/alchemyui/buy-dala-03.png"),
+          noBg: true
+        },
+        {
+          src: require("../../img/showcase/alchemyui/buy-dala-04.png"),
+          noBg: true
+        }
+      ]
+    },
+    {
+      type: "text",
+      headline: "Connect"
+    },
+    {
+      type: "image",
+      src: require("../../img/showcase/alchemyui/connect.png"),
+      extend: true
+    },
+    {
+      type: "text",
+      headline: "Market"
+    },
+    {
+      type: "image",
+      src: require("../../img/showcase/alchemyui/market.png"),
+      extend: true
     }
   ]
 };

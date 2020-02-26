@@ -7,8 +7,8 @@ import { punkgoes } from "./projects/punkgoes";
 
 export const projects = [
   home,
-  newwestindustries,
   alchemyui,
+  newwestindustries,
   walainc,
   starsetonline,
   punkgoes

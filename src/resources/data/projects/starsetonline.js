@@ -21,45 +21,16 @@ export const starsetonline = {
     " and in the real world via ARG-style marketing campaigns.</p><p>For Divisions, they asked me to help create an interactive experience based on an idea of transmissions being broadcasted and intercepeted. Fans used clues found in social media to unlock content on the site via the terminal UI, culminating in the site being overtaken by the antagonist of the larger narrative.",
   showcase: [
     {
-      type: "text",
-      headline: "Branding",
-      description: [
-        "This is a description of the section to give some context to whatever is going on with this project."
-      ]
+      type: "image",
+      src: require("../../img/showcase/starsetonline/site-01.jpg")
     },
     {
       type: "image",
-      extend: true,
-      src: require("../../img/showcase/alchemyui/feed.jpg")
-    },
-    {
-      type: "imageGroup",
-      srcs: [
-        {
-          src: require("../../img/showcase/alchemyui/phone01temp.png"),
-          noBg: true,
-          caption: "Profile Page"
-        },
-        {
-          src: require("../../img/showcase/alchemyui/phone02temp.png"),
-          noBg: true,
-          caption: "Earn Page"
-        },
-        {
-          src: require("../../img/showcase/alchemyui/phone01temp.png"),
-          noBg: true,
-          caption: "Profile Page"
-        }
-      ]
-    },
-    {
-      type: "text",
-      headline: "Branding"
+      src: require("../../img/showcase/starsetonline/site-02.jpg")
     },
     {
       type: "image",
-      extend: true,
-      src: require("../../img/showcase/alchemyui/connect.jpg")
+      src: require("../../img/showcase/starsetonline/site-03.jpg")
     }
   ]
 };

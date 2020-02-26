@@ -4,7 +4,7 @@ export const walainc = {
   heroIcon: require("../../img/walainc-logo.svg"),
   heroIconBlack: require("../../img/walainc-logo-black.svg"),
   projectName: "Wala, Inc.",
-  heroSkillSet: "Web, Print, Identity",
+  heroSkillSet: "Web, Identity",
   tagline:
     "A fintech company that served the underbanked and unbanked in Africa.",
   externalLinks: [
@@ -22,45 +22,29 @@ export const walainc = {
     " aspects of design, from the app itself to their branding, marketing, and anything else that called for design.",
   showcase: [
     {
-      type: "text",
-      headline: "Branding",
-      description: [
-        "This is a description of the section to give some context to whatever is going on with this project."
-      ]
-    },
-    {
-      type: "image",
-      extend: true,
-      src: require("../../img/showcase/alchemyui/feed.jpg")
+      type: "video",
+      src: require("../../img/showcase/walainc/wala-website.mp4"),
+      poster: require("../../img/showcase/walainc/poster.jpg")
     },
     {
       type: "imageGroup",
       srcs: [
         {
-          src: require("../../img/showcase/alchemyui/phone01temp.png"),
-          noBg: true,
-          caption: "Profile Page"
+          src: require("../../img/showcase/walainc/mobile-01.png"),
+          phoneMask: true,
+          noBg: true
         },
         {
-          src: require("../../img/showcase/alchemyui/phone02temp.png"),
-          noBg: true,
-          caption: "Earn Page"
+          src: require("../../img/showcase/walainc/mobile-02.png"),
+          phoneMask: true,
+          noBg: true
         },
         {
-          src: require("../../img/showcase/alchemyui/phone01temp.png"),
-          noBg: true,
-          caption: "Profile Page"
+          src: require("../../img/showcase/walainc/mobile-03.png"),
+          phoneMask: true,
+          noBg: true
         }
       ]
-    },
-    {
-      type: "text",
-      headline: "Branding"
-    },
-    {
-      type: "image",
-      extend: true,
-      src: require("../../img/showcase/alchemyui/connect.jpg")
     }
   ]
 };

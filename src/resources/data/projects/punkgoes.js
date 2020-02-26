@@ -21,45 +21,50 @@ export const punkgoes = {
     " Acoustic, so we redesigned everything to look like the old MySpace website, warts and all.",
   showcase: [
     {
-      type: "text",
-      headline: "Branding",
-      description: [
-        "This is a description of the section to give some context to whatever is going on with this project."
-      ]
+      type: "image",
+      src: require("../../img/showcase/punkgoes/site-01.jpg")
     },
     {
       type: "image",
-      extend: true,
-      src: require("../../img/showcase/alchemyui/feed.jpg")
+      src: require("../../img/showcase/punkgoes/site-02.jpg")
+    },
+    {
+      type: "image",
+      src: require("../../img/showcase/punkgoes/site-03.jpg")
+    },
+    {
+      type: "image",
+      src: require("../../img/showcase/punkgoes/site-04.jpg")
     },
     {
       type: "imageGroup",
       srcs: [
         {
-          src: require("../../img/showcase/alchemyui/phone01temp.png"),
-          noBg: true,
-          caption: "Profile Page"
+          src: require("../../img/showcase/punkgoes/mobile-01.png"),
+          phoneMask: true,
+          noBg: true
         },
         {
-          src: require("../../img/showcase/alchemyui/phone02temp.png"),
-          noBg: true,
-          caption: "Earn Page"
+          src: require("../../img/showcase/punkgoes/mobile-02.png"),
+          phoneMask: true,
+          noBg: true
         },
         {
-          src: require("../../img/showcase/alchemyui/phone01temp.png"),
-          noBg: true,
-          caption: "Profile Page"
+          src: require("../../img/showcase/punkgoes/mobile-03.png"),
+          phoneMask: true,
+          noBg: true
+        },
+        {
+          src: require("../../img/showcase/punkgoes/mobile-04.png"),
+          phoneMask: true,
+          noBg: true
+        },
+        {
+          src: require("../../img/showcase/punkgoes/mobile-05.png"),
+          phoneMask: true,
+          noBg: true
         }
       ]
-    },
-    {
-      type: "text",
-      headline: "Branding"
-    },
-    {
-      type: "image",
-      extend: true,
-      src: require("../../img/showcase/alchemyui/connect.jpg")
     }
   ]
 };

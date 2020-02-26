@@ -116,7 +116,7 @@
     margin-right: -16px;
     margin-left: -16px;
     @include media_queries($desktop) {
-      margin-bottom: v-rhythm(6, "px");
+      margin-bottom: v-rhythm(2, "px");
       margin-right: 0;
       margin-left: 0;
     }
@@ -141,6 +141,9 @@
     left: 24px;
     right: 23px;
     z-index: 5;
+    @include media_queries($desktop) {
+      right: 21px;
+    }
   }
 }
 
