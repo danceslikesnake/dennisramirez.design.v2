@@ -29,6 +29,40 @@ export const alchemyui = {
   showcase: [
     {
       type: "text",
+      headline: "Buying Dala",
+      description: [
+        "A cryptocurrency called Dala powered Wala's features," +
+          " and users were able to exchange fiat for the coin inside the app" +
+          " itself."
+      ]
+    },
+    {
+      type: "imageGroup",
+      srcs: [
+        {
+          src: require("../../img/showcase/alchemyui/main-screens-06.png"),
+          noBg: true
+        },
+        {
+          src: require("../../img/showcase/alchemyui/buy-dala-01.png"),
+          noBg: true
+        },
+        {
+          src: require("../../img/showcase/alchemyui/buy-dala-02.png"),
+          noBg: true
+        },
+        {
+          src: require("../../img/showcase/alchemyui/buy-dala-03.png"),
+          noBg: true
+        },
+        {
+          src: require("../../img/showcase/alchemyui/buy-dala-04.png"),
+          noBg: true
+        }
+      ]
+    },
+    {
+      type: "text",
       headline: "Main Screens"
     },
     {
@@ -58,7 +92,11 @@ export const alchemyui = {
     },
     {
       type: "text",
-      headline: "Earn"
+      headline: "Earn",
+      description: [
+        "Users were able to earn money performing various microjobs they" +
+          " could then send to friends or spend in the Market"
+      ]
     },
     {
       type: "image",
@@ -67,36 +105,11 @@ export const alchemyui = {
     },
     {
       type: "text",
-      headline: "Buying Dala"
-    },
-    {
-      type: "imageGroup",
-      srcs: [
-        {
-          src: require("../../img/showcase/alchemyui/main-screens-06.png"),
-          noBg: true
-        },
-        {
-          src: require("../../img/showcase/alchemyui/buy-dala-01.png"),
-          noBg: true
-        },
-        {
-          src: require("../../img/showcase/alchemyui/buy-dala-02.png"),
-          noBg: true
-        },
-        {
-          src: require("../../img/showcase/alchemyui/buy-dala-03.png"),
-          noBg: true
-        },
-        {
-          src: require("../../img/showcase/alchemyui/buy-dala-04.png"),
-          noBg: true
-        }
+      headline: "Connect",
+      description: [
+        "Users could send and receive Dala payments from any friends or" +
+          " family that had joined Wala"
       ]
-    },
-    {
-      type: "text",
-      headline: "Connect"
     },
     {
       type: "image",
@@ -105,7 +118,12 @@ export const alchemyui = {
     },
     {
       type: "text",
-      headline: "Market"
+      headline: "Market",
+      description: [
+        "Users could use Dala to purchase utilities like airtime," +
+          " electricity, and" +
+          " water from local providers for themselves or friends and family"
+      ]
     },
     {
       type: "image",
