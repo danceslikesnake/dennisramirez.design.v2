@@ -45,13 +45,9 @@ export default class App extends Component {
     // check that fonts are loaded
     this.fontObserver();
     // preload images
-    let imgsToLoad = [
-      require("./resources/img/nav-menu-btn.svg"),
-      require("./resources/img/showcase/Phone Clay.png")
-    ];
+    let imgsToLoad = [require("./resources/img/nav-menu-btn.svg")];
     this.state.projects.forEach((project, idx) => {
       if (project.heroImage) imgsToLoad.push(project.heroImage);
-      if (project.heroIcon) imgsToLoad.push(project.heroIcon);
       if (project.heroIconBlack) imgsToLoad.push(project.heroIconBlack);
     });
     this.preloadImages(imgsToLoad);
