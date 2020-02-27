@@ -11,6 +11,7 @@ import HomeHero from "./components/HomeHero";
 import GridSlices from "./components/shared/GridSlices";
 import Navigation from "./components/shared/Navigation";
 import ProjectDetail from "./components/ProjectDetail";
+import Indicator from "./components/shared/Indicator";
 
 const debounce = (func, delay) => {
   let inDebounce;
@@ -298,6 +299,14 @@ export default class App extends Component {
     });
   };
 
+  navGotoProject = idx => {
+    if (idx !== this.state.activeProjectIndex) {
+      this.setState({
+        activeProjectIndex: idx
+      });
+    }
+  };
+
   render() {
     const { projects, activeProjectIndex } = this.state;
     const activeProject = projects[activeProjectIndex];
@@ -306,8 +315,16 @@ export default class App extends Component {
         {this.state.fontLoaded === false ||
         this.state.imagesLoaded === false ? (
           <div className="preloader-overlay">
-            <i className="far fa-spinner fa-spin" style={{ color: "white" }} />{" "}
-            loading...
+            <div className="preloader-content">
+              <div className="spinner">
+                <div className="rect1"></div>
+                <div className="rect2"></div>
+                <div className="rect3"></div>
+                <div className="rect4"></div>
+                <div className="rect5"></div>
+              </div>
+              Hi! I'm Dennis Ramirez. With you in a second...
+            </div>
           </div>
         ) : null}
         <div className="gridLines -outer" />
@@ -319,7 +336,16 @@ export default class App extends Component {
         <Navigation
           detailIsActive={this.state.showDetail}
           hideDetail={this.hideDetail}
+          projects={projects}
+          navGotoProject={this.navGotoProject}
+          activeProjectIndex={activeProjectIndex}
         />
+        {!this.state.showDetail && (
+          <Indicator
+            numberOfProjects={projects.length}
+            activeProjectIndex={activeProjectIndex}
+          />
+        )}
         {activeProject.id === "home" ? (
           <HomeHero
             project={activeProject}

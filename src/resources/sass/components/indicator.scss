@@ -1,0 +1,9 @@
+@import "../utilities/all";
+
+.indicator {
+  @include positionFixed($right: 0, $top: 0);
+  @include set-z-index("navigation");
+  @include transition(top 1.45s);
+  width: 4px;
+  background: $color-razzmatazz-pink;
+}

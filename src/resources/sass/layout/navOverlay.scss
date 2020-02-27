@@ -1,0 +1,54 @@
+@import "../utilities/all";
+
+.navOverlay {
+  @include positionFixed($cover: true);
+  z-index: 89;
+  background: $color-deep-purple;
+  opacity: 0;
+  display: none;
+
+  &__content {
+    @include positionFixed($center: true);
+    @include set-z-index("navigation");
+  }
+
+  &__projectLinks {
+    li:not(:last-child) {
+      margin-bottom: 8px;
+      @include media_queries($tablet) {
+        margin-bottom: 16px;
+      }
+    }
+  }
+
+  &__projectLink {
+    opacity: 0;
+  }
+
+  &__projectLogo {
+    margin-left: -8px !important;
+    margin-right: 16px !important;
+    display: inline-block;
+    text-align: center;
+    width: 48px;
+    img {
+      height: 24px;
+    }
+  }
+
+  &__selectedWork {
+    @include sofia-pro-black;
+    color: color-shader($color-deep-purple, 3);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 16px;
+    @include media_queries($tablet) {
+      margin-bottom: 24px;
+      font-size: type-scale(1);
+    }
+  }
+
+  &.-revealNavOverlay {
+    display: block;
+  }
+}
