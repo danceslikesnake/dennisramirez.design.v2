@@ -168,6 +168,13 @@
     @include transition(all 0.2s);
     color: $color-razzmatazz-pink;
     border-bottom: 8px solid $color-razzmatazz-pink;
+
+    span {
+      margin-left: 8px;
+      @include media_queries($desktop) {
+        margin-left: 16px;
+      }
+    }
   }
 }
 

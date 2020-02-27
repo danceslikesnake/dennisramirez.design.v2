@@ -49,11 +49,15 @@
     padding: 0 32px;
     text-align: center;
     @include media_queries($desktop) {
-      @include calculate-line-height(4);
-      font-size: type-scale(6, $dense-font-size);
+      @include calculate-line-height(2.5);
+      font-size: type-scale(5, $dense-font-size);
       letter-spacing: -2.96px;
       margin-bottom: v-rhythm(5, "px");
       padding: 0 24px;
+    }
+    @include media_queries($from: 1367px) {
+      @include calculate-line-height(4);
+      font-size: type-scale(6, $dense-font-size);
     }
 
     strong {
@@ -72,6 +76,9 @@
     width: 100%;
     z-index: 1;
     @include media_queries($desktop) {
+      bottom: 128px;
+    }
+    @include media_queries($from: 1367px) {
       bottom: 152px;
     }
   }
@@ -87,10 +94,14 @@
     padding: 24px 64px 24px 24px;
     line-height: 32px;
     @include media_queries($desktop) {
-      font-size: type-scale(6, $dense-font-size);
+      font-size: type-scale(5, $dense-font-size);
       letter-spacing: -2.96px;
       margin: 0;
       line-height: 80px;
+      padding: 8px 120px 16px 24px;
+    }
+    @include media_queries($from: 1367px) {
+      font-size: type-scale(6, $dense-font-size);
       padding: 24px 120px 32px 24px;
     }
   }
@@ -99,8 +110,11 @@
     @include positionAbsolute($right: 24px, $top: 50%, $align: "vertical");
     width: 48px;
     @include media_queries($desktop) {
-      width: 104px;
+      width: 64px;
       $right: 24px;
+    }
+    @include media_queries($from: 1367px) {
+      width: 104px;
     }
   }
 
@@ -112,6 +126,9 @@
     @include media_queries($desktop) {
       width: 100%;
       margin-left: 0;
+      bottom: 48px;
+    }
+    @include media_queries($from: 1367px) {
       bottom: 72px;
     }
   }
@@ -170,8 +187,11 @@
     padding: 0 16px;
     height: 88px;
     @include media_queries($desktop) {
-      height: 144px;
+      height: 120px;
       padding: 0 24px;
+    }
+    @include media_queries($from: 1367px) {
+      height: 144px;
     }
   }
 

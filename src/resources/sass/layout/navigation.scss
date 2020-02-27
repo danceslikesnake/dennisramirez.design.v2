@@ -5,6 +5,9 @@
   @include set-z-index("navigation");
   width: 100%;
   @include media_queries($desktop) {
+    top: 48px;
+  }
+  @include media_queries($from: 1367px) {
     top: 72px;
   }
 

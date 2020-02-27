@@ -165,6 +165,8 @@ class NavigationOverlay extends Component {
                     </button>
                   </li>
                 );
+              } else {
+                return null;
               }
             })}
           </ul>

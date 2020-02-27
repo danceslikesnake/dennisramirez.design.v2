@@ -6,9 +6,12 @@
   width: calc(100% - 32px);
   letter-spacing: -0.79px;
   @include media_queries($desktop) {
-    top: calc(100% - 144px);
+    top: calc(100% - 120px);
     width: calc(100% - 48px);
     left: 24px;
+  }
+  @include media_queries($from: 1367px) {
+    top: calc(100% - 144px);
   }
 }
 
@@ -24,10 +27,10 @@
     color: $color-deep-purple;
     line-height: 32px;
     @include media_queries($desktop) {
-      padding: 48px 24px 24px 24px;
+      padding: 40px 24px 24px 24px;
       font-size: type-scale(3);
       letter-spacing: -1.43px;
-      @include calculate-line-height(1.333333333333);
+      line-height: 48px;
     }
   }
 
@@ -38,19 +41,25 @@
     letter-spacing: -1.09px;
     line-height: 32px;
     @include media_queries($desktop) {
-      padding: 16px 24px 64px 24px;
+      padding: 16px 24px 52px 24px;
       font-size: type-scale(3);
       letter-spacing: -1.43px;
       @include calculate-line-height(1.333333333333);
     }
 
     li {
-      display: inline-block;
+      display: block;
       padding-right: 24px;
       margin-bottom: 16px;
       @include media_queries($desktop) {
         padding-right: 32px;
-        margin-bottom: 0;
+      }
+    }
+
+    li:not(:last-child) {
+      margin-bottom: 16px;
+      @include media_queries($desktop) {
+        margin-bottom: 32px;
       }
     }
   }
@@ -70,9 +79,9 @@
 
   &__lists {
     margin-top: 0;
-    padding: 0 16px;
+    padding: 0 16px 24px 16px;
     @include media_queries($desktop) {
-      padding: 0 24px;
+      padding: 0 24px 24px 24px;
     }
   }
 

@@ -10,11 +10,11 @@ export const alchemyui = {
   externalLinks: [
     {
       label: "View GitHub",
-      href: "https://www.starsetonline.com"
+      href: "https://github.com/danceslikesnake/wala-alchemy-ui"
     },
     {
       label: "Download APK",
-      href: "https://www.starsetonline.com",
+      href: "/app-release-apk.zip",
       icon: "fad fa-download"
     }
   ],

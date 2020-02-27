@@ -96,7 +96,7 @@ class ProjectHero extends Component {
   }
 
   render() {
-    const { project, projectHeroCallback } = this.props;
+    const { project } = this.props;
     return (
       <div
         className={
