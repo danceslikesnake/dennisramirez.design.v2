@@ -85,10 +85,6 @@ export const newwestindustries = {
       src: require("../../img/showcase/newwest/rebels-01.jpg")
     },
     {
-      type: "text",
-      headline: "Mobile Screenshots"
-    },
-    {
       type: "imageGroup",
       srcs: [
         {

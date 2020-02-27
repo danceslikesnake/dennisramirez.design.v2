@@ -73,34 +73,40 @@ export const walainc = {
     },
     {
       type: "text",
-      headline: "Color Scheme"
+      headline: "Color Palette"
     },
     {
       type: "imageGroup",
       srcs: [
         {
           src: require("../../img/showcase/walainc/wala teal.png"),
-          noBg: true
+          noBg: true,
+          caption: "Wala Teal"
         },
         {
           src: require("../../img/showcase/walainc/curious blue.png"),
-          noBg: true
+          noBg: true,
+          caption: "Curious Blue"
         },
         {
           src: require("../../img/showcase/walainc/scampi purple.png"),
-          noBg: true
+          noBg: true,
+          caption: "Scampi Purple"
         },
         {
           src: require("../../img/showcase/walainc/torch red.png"),
-          noBg: true
+          noBg: true,
+          caption: "Torch Red"
         },
         {
           src: require("../../img/showcase/walainc/Poppy Yellow.png"),
-          noBg: true
+          noBg: true,
+          caption: "Poppy Yellow"
         },
         {
           src: require("../../img/showcase/walainc/Charcoal.png"),
-          noBg: true
+          noBg: true,
+          caption: "Charcoal"
         }
       ]
     }

@@ -18,11 +18,22 @@ export const punkgoes = {
   year: "2019",
   description:
     "Fearless wanted a nostalgic feel to promote the latest Punk Goes" +
-    " Acoustic, so we redesigned everything to look like the old MySpace website, warts and all.",
+    " Acoustic, so we redesigned everything to look like the old MySpace" +
+    " website, warts and all, while adding a responsive design lacking in" +
+    " the original.",
   showcase: [
     {
       type: "image",
       src: require("../../img/showcase/punkgoes/site-01.jpg")
+    },
+    {
+      type: "text",
+      headline: "Customizable Homepage",
+      description: [
+        "Users were able to customize the" +
+          " homepage just like their old MySpace profiles, and then share them" +
+          " with friends."
+      ]
     },
     {
       type: "image",
