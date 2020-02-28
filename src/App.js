@@ -82,7 +82,8 @@ export default class App extends Component {
       if (!window.animIsPaused) window.pauseLogoAnimation(true);
       let currentIndex = this.state.activeProjectIndex;
       let totalProjects = this.state.projects.length - 1;
-      let delta = event.wheelDelta / 30 || -event.detail;
+      let delta = event.deltaY / 30 || -event.detail;
+      console.log(delta);
 
       if (this.state.fontLoaded === true && this.state.imagesLoaded === true) {
         //Normalize event wheel delta
@@ -90,7 +91,7 @@ export default class App extends Component {
         //If the user scrolled up, it goes to previous slide, otherwise - to next slide
         if (!this.state.projectsAreTransitioning) {
           window.setTransitioning(true);
-          if (delta < -1) {
+          if (delta > 0.5) {
             if (currentIndex < totalProjects) {
               this.setState(
                 {
@@ -101,7 +102,7 @@ export default class App extends Component {
                 }
               );
             }
-          } else if (delta > 1) {
+          } else if (delta < -0.5) {
             if (currentIndex > 0) {
               this.setState(
                 {
