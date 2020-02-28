@@ -320,7 +320,7 @@ export default class App extends Component {
                 <div className="rect4"></div>
                 <div className="rect5"></div>
               </div>
-              Hi! I'm Dennis Ramirez. With you in a second...
+              Hi! I'm Dennis Ramirez. Be with you in a second...
             </div>
           </div>
         ) : null}
