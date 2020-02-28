@@ -83,7 +83,7 @@ export default class App extends Component {
       let currentIndex = this.state.activeProjectIndex;
       let totalProjects = this.state.projects.length - 1;
       let delta = event.deltaY / 30 || -event.detail;
-      console.log(delta);
+      //console.log(delta);
 
       if (this.state.fontLoaded === true && this.state.imagesLoaded === true) {
         //Normalize event wheel delta
