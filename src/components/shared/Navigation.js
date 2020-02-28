@@ -132,7 +132,7 @@ class Navigation extends Component {
                 <div className="level-item">
                   <a
                     className="mainNavigation__hireMe"
-                    href="mailTo:designexcathedra@gmail.com?subject=Hello! I would like to hire you!"
+                    href="mailto:designexcathedra@gmail.com?subject=Hello! I would like to hire you!"
                     rel="noopener noreferrer"
                     target="_blank"
                     onMouseEnter={() => {
