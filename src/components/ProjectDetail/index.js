@@ -152,6 +152,9 @@ class ProjectDetail extends Component {
                       addPhoneMask={el.phoneMask}
                       extend={el.extend}
                       noBg={el.noBg}
+                      aspectRatio={el.aspectRatio}
+                      height={el.height}
+                      width={el.width}
                     />
                   );
                   break;
@@ -165,6 +168,9 @@ class ProjectDetail extends Component {
                         addPhoneMask={img.phoneMask}
                         extend={img.extend}
                         noBg={img.noBg}
+                        aspectRatio={img.aspectRatio}
+                        height={img.height}
+                        width={img.width}
                       />
                     );
                   });

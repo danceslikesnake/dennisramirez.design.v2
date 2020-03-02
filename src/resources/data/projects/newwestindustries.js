@@ -26,7 +26,10 @@ export const newwestindustries = {
   showcase: [
     {
       type: "image",
-      src: require("../../img/showcase/newwest/homepage-01.jpg")
+      src: require("../../img/showcase/newwest/homepage-01.jpg"),
+      aspectRatio: 1.461588,
+      width: 1536,
+      height: 2245
     },
     {
       type: "text",
@@ -34,15 +37,24 @@ export const newwestindustries = {
     },
     {
       type: "image",
-      src: require("../../img/showcase/newwest/recruitment-form-01.jpg")
+      src: require("../../img/showcase/newwest/recruitment-form-01.jpg"),
+      aspectRatio: 0.625,
+      width: 1536,
+      height: 960
     },
     {
       type: "image",
-      src: require("../../img/showcase/newwest/recruitment-form-02.jpg")
+      src: require("../../img/showcase/newwest/recruitment-form-02.jpg"),
+      aspectRatio: 0.625,
+      width: 1536,
+      height: 960
     },
     {
       type: "image",
-      src: require("../../img/showcase/newwest/recruitment-form-03.jpg")
+      src: require("../../img/showcase/newwest/recruitment-form-03.jpg"),
+      aspectRatio: 0.625,
+      width: 1536,
+      height: 960
     },
     {
       type: "text",
@@ -58,7 +70,10 @@ export const newwestindustries = {
     },
     {
       type: "image",
-      src: require("../../img/showcase/newwest/recruitment-form-04.jpg")
+      src: require("../../img/showcase/newwest/recruitment-form-04.jpg"),
+      aspectRatio: 0.625,
+      width: 1536,
+      height: 960
     },
     {
       type: "text",
@@ -66,7 +81,10 @@ export const newwestindustries = {
     },
     {
       type: "image",
-      src: require("../../img/showcase/newwest/recruitment-form-05.jpg")
+      src: require("../../img/showcase/newwest/recruitment-form-05.jpg"),
+      aspectRatio: 0.625,
+      width: 1536,
+      height: 960
     },
     {
       type: "text",
@@ -83,40 +101,55 @@ export const newwestindustries = {
     },
     {
       type: "image",
-      src: require("../../img/showcase/newwest/rebels-01.jpg")
+      src: require("../../img/showcase/newwest/rebels-01.jpg"),
+      aspectRatio: 0,
+      width: 1536,
+      height: 3279
     },
     {
       type: "imageGroup",
       srcs: [
         {
           src: require("../../img/showcase/newwest/mobile-01.png"),
-          phoneMask: true,
-          noBg: true
+          noBg: true,
+          aspectRatio: 2.04,
+          width: 500,
+          height: 1020
         },
         {
           src: require("../../img/showcase/newwest/mobile-02.png"),
-          phoneMask: true,
-          noBg: true
+          noBg: true,
+          aspectRatio: 2.04,
+          width: 500,
+          height: 1020
         },
         {
           src: require("../../img/showcase/newwest/mobile-03.png"),
-          phoneMask: true,
-          noBg: true
+          noBg: true,
+          aspectRatio: 2.04,
+          width: 500,
+          height: 1020
         },
         {
           src: require("../../img/showcase/newwest/mobile-04.png"),
-          phoneMask: true,
-          noBg: true
+          noBg: true,
+          aspectRatio: 2.04,
+          width: 500,
+          height: 1020
         },
         {
           src: require("../../img/showcase/newwest/mobile-05.png"),
-          phoneMask: true,
-          noBg: true
+          noBg: true,
+          aspectRatio: 2.04,
+          width: 500,
+          height: 1020
         },
         {
           src: require("../../img/showcase/newwest/mobile-06.png"),
-          phoneMask: true,
-          noBg: true
+          noBg: true,
+          aspectRatio: 2.04,
+          width: 500,
+          height: 1020
         }
       ]
     }

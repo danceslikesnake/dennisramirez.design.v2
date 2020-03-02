@@ -30,6 +30,50 @@ export const alchemyui = {
   showcase: [
     {
       type: "text",
+      headline: "Main Screens"
+    },
+    {
+      type: "imageGroup",
+      srcs: [
+        {
+          src: require("../../img/showcase/alchemyui/main-screens-01.png"),
+          noBg: true,
+          aspectRatio: 2.026,
+          height: 1013,
+          width: 500
+        },
+        {
+          src: require("../../img/showcase/alchemyui/main-screens-02.png"),
+          noBg: true,
+          aspectRatio: 2.026,
+          height: 1013,
+          width: 500
+        },
+        {
+          src: require("../../img/showcase/alchemyui/main-screens-03.png"),
+          noBg: true,
+          aspectRatio: 2.026,
+          height: 1013,
+          width: 500
+        },
+        {
+          src: require("../../img/showcase/alchemyui/main-screens-04.png"),
+          noBg: true,
+          aspectRatio: 2.026,
+          height: 1013,
+          width: 500
+        },
+        {
+          src: require("../../img/showcase/alchemyui/main-screens-05.png"),
+          noBg: true,
+          aspectRatio: 2.026,
+          height: 1013,
+          width: 500
+        }
+      ]
+    },
+    {
+      type: "text",
       headline: "Buying Dala",
       description: [
         "A cryptocurrency called Dala powered Wala's features," +
@@ -42,67 +86,40 @@ export const alchemyui = {
       srcs: [
         {
           src: require("../../img/showcase/alchemyui/main-screens-06.png"),
-          noBg: true
+          noBg: true,
+          aspectRatio: 2.026,
+          height: 1013,
+          width: 500
         },
         {
           src: require("../../img/showcase/alchemyui/buy-dala-01.png"),
-          noBg: true
+          noBg: true,
+          aspectRatio: 2.026,
+          height: 1013,
+          width: 500
         },
         {
           src: require("../../img/showcase/alchemyui/buy-dala-02.png"),
-          noBg: true
+          noBg: true,
+          aspectRatio: 2.026,
+          height: 1013,
+          width: 500
         },
         {
           src: require("../../img/showcase/alchemyui/buy-dala-03.png"),
-          noBg: true
+          noBg: true,
+          aspectRatio: 2.026,
+          height: 1013,
+          width: 500
         },
         {
           src: require("../../img/showcase/alchemyui/buy-dala-04.png"),
-          noBg: true
+          noBg: true,
+          aspectRatio: 2.026,
+          height: 1013,
+          width: 500
         }
       ]
-    },
-    {
-      type: "text",
-      headline: "Main Screens"
-    },
-    {
-      type: "imageGroup",
-      srcs: [
-        {
-          src: require("../../img/showcase/alchemyui/main-screens-01.png"),
-          noBg: true
-        },
-        {
-          src: require("../../img/showcase/alchemyui/main-screens-02.png"),
-          noBg: true
-        },
-        {
-          src: require("../../img/showcase/alchemyui/main-screens-03.png"),
-          noBg: true
-        },
-        {
-          src: require("../../img/showcase/alchemyui/main-screens-04.png"),
-          noBg: true
-        },
-        {
-          src: require("../../img/showcase/alchemyui/main-screens-05.png"),
-          noBg: true
-        }
-      ]
-    },
-    {
-      type: "text",
-      headline: "Earn",
-      description: [
-        "Users were able to earn money performing various microjobs they" +
-          " could then send to friends or spend in the Market"
-      ]
-    },
-    {
-      type: "image",
-      src: require("../../img/showcase/alchemyui/earn.png"),
-      extend: true
     },
     {
       type: "text",
@@ -115,7 +132,26 @@ export const alchemyui = {
     {
       type: "image",
       src: require("../../img/showcase/alchemyui/connect.png"),
-      extend: true
+      extend: true,
+      aspectRatio: 0.5,
+      height: 840,
+      width: 1680
+    },
+    {
+      type: "text",
+      headline: "Earn",
+      description: [
+        "Users were able to earn money performing various microjobs they" +
+          " could then send to friends or spend in the Market"
+      ]
+    },
+    {
+      type: "image",
+      src: require("../../img/showcase/alchemyui/earn.png"),
+      extend: true,
+      aspectRatio: 0.5,
+      height: 840,
+      width: 1680
     },
     {
       type: "text",
@@ -129,7 +165,10 @@ export const alchemyui = {
     {
       type: "image",
       src: require("../../img/showcase/alchemyui/market.png"),
-      extend: true
+      extend: true,
+      aspectRatio: 0.5,
+      height: 840,
+      width: 1680
     }
   ]
 };

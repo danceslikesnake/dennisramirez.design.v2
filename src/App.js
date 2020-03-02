@@ -29,7 +29,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fontLoaded: false,
+      fontLoaded: true,
       projects: projects,
       imagesLoaded: false,
       activeProjectIndex: 0,
@@ -45,7 +45,7 @@ export default class App extends Component {
     // check that fonts are loaded
     this.fontObserver();
     // preload images
-    let imgsToLoad = [require("./resources/img/nav-menu-btn.svg")];
+    let imgsToLoad = [];
     this.state.projects.forEach((project, idx) => {
       if (project.heroImage) imgsToLoad.push(project.heroImage);
       if (project.heroDevice) imgsToLoad.push(project.heroDevice);
@@ -70,7 +70,6 @@ export default class App extends Component {
     Promise.all([new FontFaceObserver("sofia-pro").load()]).then(
       () => {
         document.documentElement.classList.add("fonts-loaded");
-        this.setState({ fontLoaded: true });
       },
       err => {
         console.error("Failed to load fonts!", err);

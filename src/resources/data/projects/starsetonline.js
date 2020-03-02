@@ -34,7 +34,10 @@ export const starsetonline = {
     },
     {
       type: "image",
-      src: require("../../img/showcase/starsetonline/site-01.jpg")
+      src: require("../../img/showcase/starsetonline/site-01.jpg"),
+      aspectRatio: 0.625,
+      width: 1536,
+      height: 960
     },
     {
       type: "text",
@@ -47,7 +50,10 @@ export const starsetonline = {
     },
     {
       type: "image",
-      src: require("../../img/showcase/starsetonline/site-02.jpg")
+      src: require("../../img/showcase/starsetonline/site-02.jpg"),
+      aspectRatio: 1.369792,
+      width: 1536,
+      height: 2104
     },
     {
       type: "text",
@@ -62,11 +68,17 @@ export const starsetonline = {
     },
     {
       type: "image",
-      src: require("../../img/showcase/starsetonline/site-04.jpg")
+      src: require("../../img/showcase/starsetonline/site-04.jpg"),
+      aspectRatio: 0.625,
+      width: 1536,
+      height: 960
     },
     {
       type: "image",
-      src: require("../../img/showcase/starsetonline/site-03.jpg")
+      src: require("../../img/showcase/starsetonline/site-03.jpg"),
+      aspectRatio: 1.591797,
+      width: 1536,
+      height: 2445
     }
   ]
 };

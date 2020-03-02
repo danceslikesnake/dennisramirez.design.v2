@@ -39,15 +39,24 @@ export const walainc = {
       srcs: [
         {
           src: require("../../img/showcase/walainc/mobile-01.png"),
-          noBg: true
+          noBg: true,
+          aspectRatio: 2.04,
+          width: 500,
+          height: 1020
         },
         {
           src: require("../../img/showcase/walainc/mobile-02.png"),
-          noBg: true
+          noBg: true,
+          aspectRatio: 2.04,
+          width: 500,
+          height: 1020
         },
         {
           src: require("../../img/showcase/walainc/mobile-03.png"),
-          noBg: true
+          noBg: true,
+          aspectRatio: 2.04,
+          width: 500,
+          height: 1020
         }
       ]
     },
@@ -60,15 +69,24 @@ export const walainc = {
       srcs: [
         {
           src: require("../../img/showcase/walainc/standard logo.png"),
-          noBg: true
+          noBg: true,
+          aspectRatio: 0.75,
+          width: 500,
+          height: 375
         },
         {
           src: require("../../img/showcase/walainc/white logo.png"),
-          noBg: true
+          noBg: true,
+          aspectRatio: 0.75,
+          width: 500,
+          height: 375
         },
         {
           src: require("../../img/showcase/walainc/black logo.png"),
-          noBg: true
+          noBg: true,
+          aspectRatio: 0.75,
+          width: 500,
+          height: 375
         }
       ]
     },
@@ -82,32 +100,50 @@ export const walainc = {
         {
           src: require("../../img/showcase/walainc/wala teal.png"),
           noBg: true,
-          caption: "Wala Teal"
+          caption: "Wala Teal",
+          aspectRatio: 0.75,
+          width: 500,
+          height: 375
         },
         {
           src: require("../../img/showcase/walainc/curious blue.png"),
           noBg: true,
-          caption: "Curious Blue"
+          caption: "Curious Blue",
+          aspectRatio: 0.75,
+          width: 500,
+          height: 375
         },
         {
           src: require("../../img/showcase/walainc/scampi purple.png"),
           noBg: true,
-          caption: "Scampi Purple"
+          caption: "Scampi Purple",
+          aspectRatio: 0.75,
+          width: 500,
+          height: 375
         },
         {
           src: require("../../img/showcase/walainc/torch red.png"),
           noBg: true,
-          caption: "Torch Red"
+          caption: "Torch Red",
+          aspectRatio: 0.75,
+          width: 500,
+          height: 375
         },
         {
           src: require("../../img/showcase/walainc/Poppy Yellow.png"),
           noBg: true,
-          caption: "Poppy Yellow"
+          caption: "Poppy Yellow",
+          aspectRatio: 0.75,
+          width: 500,
+          height: 375
         },
         {
           src: require("../../img/showcase/walainc/Charcoal.png"),
           noBg: true,
-          caption: "Charcoal"
+          caption: "Charcoal",
+          aspectRatio: 0.75,
+          width: 500,
+          height: 375
         }
       ]
     }

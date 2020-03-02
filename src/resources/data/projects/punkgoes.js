@@ -38,15 +38,24 @@ export const punkgoes = {
     },
     {
       type: "image",
-      src: require("../../img/showcase/punkgoes/site-02.jpg")
+      src: require("../../img/showcase/punkgoes/site-02.jpg"),
+      aspectRatio: 0.625,
+      width: 1536,
+      height: 960
     },
     {
       type: "image",
-      src: require("../../img/showcase/punkgoes/site-03.jpg")
+      src: require("../../img/showcase/punkgoes/site-03.jpg"),
+      aspectRatio: 0.625,
+      width: 1536,
+      height: 960
     },
     {
       type: "image",
-      src: require("../../img/showcase/punkgoes/site-04.jpg")
+      src: require("../../img/showcase/punkgoes/site-04.jpg"),
+      aspectRatio: 0.625,
+      width: 1536,
+      height: 960
     },
     {
       type: "imageGroup",
@@ -54,27 +63,42 @@ export const punkgoes = {
         {
           src: require("../../img/showcase/punkgoes/mobile-01.png"),
           phoneMask: true,
-          noBg: true
+          noBg: true,
+          aspectRatio: 2.04,
+          width: 500,
+          height: 1020
         },
         {
           src: require("../../img/showcase/punkgoes/mobile-02.png"),
           phoneMask: true,
-          noBg: true
+          noBg: true,
+          aspectRatio: 2.04,
+          width: 500,
+          height: 1020
         },
         {
           src: require("../../img/showcase/punkgoes/mobile-03.png"),
           phoneMask: true,
-          noBg: true
+          noBg: true,
+          aspectRatio: 2.04,
+          width: 500,
+          height: 1020
         },
         {
           src: require("../../img/showcase/punkgoes/mobile-04.png"),
           phoneMask: true,
-          noBg: true
+          noBg: true,
+          aspectRatio: 2.04,
+          width: 500,
+          height: 1020
         },
         {
           src: require("../../img/showcase/punkgoes/mobile-05.png"),
           phoneMask: true,
-          noBg: true
+          noBg: true,
+          aspectRatio: 2.04,
+          width: 500,
+          height: 1020
         }
       ]
     }

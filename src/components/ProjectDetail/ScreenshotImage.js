@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import LazyLoad from "react-lazyload";
 import PropTypes from "prop-types";
+import ScreenshotPlaceholder from "./ScreenshotPlaceholder";
 
 class ScreenshotImage extends Component {
   render() {
@@ -18,8 +19,18 @@ class ScreenshotImage extends Component {
             />
           </div>
         )}
-        <LazyLoad height={540} offset={208}>
-          <img src={this.props.src} alt="ollo" />
+        <LazyLoad
+          offset={208}
+          placeholder={
+            <ScreenshotPlaceholder aspectRatio={this.props.aspectRatio} />
+          }
+        >
+          <img
+            src={this.props.src}
+            alt="ollo"
+            width={this.props.width}
+            height={this.props.height}
+          />
         </LazyLoad>
         {this.props.caption && (
           <div className="showcase__caption">{this.props.caption}</div>
@@ -34,7 +45,10 @@ ScreenshotImage.propTypes = {
   caption: PropTypes.string,
   addPhoneMask: PropTypes.bool,
   extend: PropTypes.bool,
-  noBg: PropTypes.bool
+  noBg: PropTypes.bool,
+  aspectRatio: PropTypes.number,
+  width: PropTypes.number,
+  height: PropTypes.number
 };
 
 export default ScreenshotImage;
