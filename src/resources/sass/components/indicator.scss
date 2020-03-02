@@ -5,5 +5,5 @@
   @include set-z-index("navigation");
   @include transition(top 1.45s);
   width: 4px;
-  background: $color-razzmatazz-pink;
+  background: rgba(white, 0.5);
 }
