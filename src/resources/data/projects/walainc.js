@@ -1,8 +1,9 @@
 export const walainc = {
   id: "walainc",
-  heroImage: require("../../img/walainc-cover.jpg"),
-  heroIcon: require("../../img/walainc-logo.svg"),
-  heroIconBlack: require("../../img/walainc-logo-black.svg"),
+  heroImage: require("../../img/showcase/walainc/walainc-cover.jpg"),
+  heroDevice: require("../../img/showcase/walainc/walainc-hero.png"),
+  heroIcon: require("../../img/showcase/walainc/walainc-logo.svg"),
+  heroIconBlack: require("../../img/showcase/walainc/walainc-logo-black.svg"),
   projectName: "Get Wala",
   heroSkillSet: "Website, Identity",
   tagline:

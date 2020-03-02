@@ -48,6 +48,7 @@ export default class App extends Component {
     let imgsToLoad = [require("./resources/img/nav-menu-btn.svg")];
     this.state.projects.forEach((project, idx) => {
       if (project.heroImage) imgsToLoad.push(project.heroImage);
+      if (project.heroDevice) imgsToLoad.push(project.heroDevice);
       if (project.heroIconBlack) imgsToLoad.push(project.heroIconBlack);
     });
     this.preloadImages(imgsToLoad);

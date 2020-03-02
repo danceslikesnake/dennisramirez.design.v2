@@ -1,8 +1,9 @@
 export const starsetonline = {
   id: "starsetonline",
-  heroImage: require("../../img/starsetonline-cover.jpg"),
-  heroIcon: require("../../img/starsetonline-logo.svg"),
-  heroIconBlack: require("../../img/starsetonline-logo-black.svg"),
+  heroImage: require("../../img/showcase/starsetonline/starsetonline-cover.jpg"),
+  heroDevice: require("../../img/showcase/starsetonline/starsetonline-hero.png"),
+  heroIcon: require("../../img/showcase/starsetonline/starsetonline-logo.svg"),
+  heroIconBlack: require("../../img/showcase/starsetonline/starsetonline-logo-black.svg"),
   projectName: "Starset Online",
   heroSkillSet: "Website, UX, UI",
   tagline: "An interactive website promoting STARSET's album release, Divsions",

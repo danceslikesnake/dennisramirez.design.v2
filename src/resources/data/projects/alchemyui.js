@@ -1,8 +1,9 @@
 export const alchemyui = {
   id: "alchemyui",
-  heroImage: require("../../img/alchemyui-cover.jpg"),
-  heroIcon: require("../../img/alchemyui-logo.svg"),
-  heroIconBlack: require("../../img/alchemyui-logo-black.svg"),
+  heroImage: require("../../img/showcase/alchemyui/alchemyui-cover.jpg"),
+  heroDevice: require("../../img/showcase/alchemyui/alchemyui-hero.png"),
+  heroIcon: require("../../img/showcase/alchemyui/alchemyui-logo.svg"),
+  heroIconBlack: require("../../img/showcase/alchemyui/alchemyui-logo-black.svg"),
   projectName: "Alchemy UI Kit",
   heroSkillSet: "UI, UX",
   tagline:

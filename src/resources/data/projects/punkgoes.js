@@ -1,8 +1,9 @@
 export const punkgoes = {
   id: "punkgoes",
-  heroImage: require("../../img/punkgoes-cover.jpg"),
-  heroIcon: require("../../img/punkgoes-logo.svg"),
-  heroIconBlack: require("../../img/punkgoes-logo-black.svg"),
+  heroImage: require("../../img/showcase/punkgoes/punkgoes-cover.jpg"),
+  heroDevice: require("../../img/showcase/punkgoes/punkgoes-hero.png"),
+  heroIcon: require("../../img/showcase/punkgoes/punkgoes-logo.svg"),
+  heroIconBlack: require("../../img/showcase/punkgoes/punkgoes-logo-black.svg"),
   projectName: "Punk Goes MySpace",
   heroSkillSet: "Website, CMS",
   tagline: "A nostalgic throwback promoting Punk Goes Acoustic, Vol 3.",

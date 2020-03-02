@@ -1,8 +1,9 @@
 export const newwestindustries = {
   id: "newwestindustries",
-  heroImage: require("../../img/newwestindustries-cover.jpg"),
-  heroIcon: require("../../img/newwestindustries-logo.svg"),
-  heroIconBlack: require("../../img/newwestindustries-logo-black.svg"),
+  heroImage: require("../../img/showcase/newwest/newwestindustries-cover.jpg"),
+  heroDevice: require("../../img/showcase/newwest/newwestindiustries-hero.png"),
+  heroIcon: require("../../img/showcase/newwest/newwestindustries-logo.svg"),
+  heroIconBlack: require("../../img/showcase/newwest/newwestindustries-logo-black.svg"),
   projectName: "New West Industries",
   heroSkillSet: "Website, UX, UI",
   tagline: "Do you have what it takes to join the New West?",

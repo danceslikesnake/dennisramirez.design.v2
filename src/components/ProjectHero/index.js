@@ -93,6 +93,16 @@ class ProjectHero extends Component {
         }
       }
     }
+    if (this.props.project !== prevProps.project) {
+      document
+        .getElementById("projectHeroDevice")
+        .classList.remove("-addColorBarBg");
+      setTimeout(() => {
+        document
+          .getElementById("projectHeroDevice")
+          .classList.add("-addColorBarBg");
+      }, 600);
+    }
   }
 
   render() {
@@ -112,6 +122,16 @@ class ProjectHero extends Component {
           <div className="projectHero__overlay" />
           <div className="projectHero__detailBar">
             <div className="projectHero__detailBarFill" />
+          </div>
+          <div
+            id="projectHeroDevice"
+            className="projectHero__device -addColorBarBg"
+          >
+            <img
+              className="projectHero__deviceImg"
+              src={project.heroDevice}
+              alt={project.projectName + " example on a device"}
+            />
           </div>
           <div className="projectHero__headlineWrapper -blendModeScreen">
             <div className="container -expanded">
