@@ -1,7 +1,7 @@
 @import "../utilities/all";
 
 .showcase {
-  padding: v-rhythm(4, "px") v-rhythm(2, "px");
+  padding: v-rhythm(4, "px") 0;
   @include media_queries($desktop) {
     padding: v-rhythm(6, "px") 0;
   }
@@ -13,31 +13,27 @@
     letter-spacing: -1.09px;
     color: color-shader($color-deep-purple, 6);
     margin-bottom: v-rhythm(4, "px");
-    padding: v-rhythm(5, "px") v-rhythm(1, "px") 0 v-rhythm(1, "px");
+    padding: v-rhythm(5, "px") v-rhythm(3, "px") 0 v-rhythm(3, "px");
     position: relative;
     @include media_queries($desktop) {
       @include calculate-line-height(1.333333333333);
       font-size: type-scale(3);
       letter-spacing: -1.43px;
       margin-bottom: v-rhythm(6, "px");
-      padding: v-rhythm(5, "px") v-rhythm(3, "px") 0 v-rhythm(3, "px");
     }
     &:after {
       @include pseudos;
-      @include positionAbsolute($top: 0, $left: v-rhythm(1, "px"));
+      @include positionAbsolute($top: 0, $left: v-rhythm(3, "px"));
       height: 8px;
       background: color-shader($color-deep-purple, 6);
       width: 10%;
-      @include media_queries($desktop) {
-        left: v-rhythm(3, "px");
-      }
     }
   }
 
   &__description {
     @include calculate-line-height(1.333333333333);
     color: color-shader($color-deep-purple, 5);
-    padding: 0 v-rhythm(1, "px");
+    padding: 0 v-rhythm(3, "px");
     margin-top: -16px;
     margin-bottom: v-rhythm(4, "px");
     letter-spacing: -0.6px;
@@ -46,7 +42,6 @@
       letter-spacing: -0.79px;
       margin-top: -8px;
       margin-bottom: v-rhythm(6, "px");
-      padding: 0 v-rhythm(3, "px");
     }
 
     strong {
@@ -116,16 +111,20 @@
     display: flex;
     margin-bottom: v-rhythm(4, "px");
     flex-wrap: wrap;
-    margin-right: -16px;
-    margin-left: -16px;
     @include media_queries($desktop) {
       margin-bottom: v-rhythm(2, "px");
-      margin-right: 0;
-      margin-left: 0;
     }
 
     .showcase__screenshot {
       width: 50%;
+      @include media_queries($until: $desktop) {
+        &:nth-child(odd) {
+          padding-right: 12px;
+        }
+        &:nth-child(even) {
+          padding-left: 12px;
+        }
+      }
       @include media_queries($desktop) {
         width: calc(100% / 3);
       }

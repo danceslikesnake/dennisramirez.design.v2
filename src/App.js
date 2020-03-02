@@ -78,7 +78,7 @@ export default class App extends Component {
   };
 
   handleScroll = debounce(event => {
-    if (!this.state.showDetail) {
+    if (!this.state.showDetail && !this.state.detailIsTransitioning) {
       if (!window.animIsPaused) window.pauseLogoAnimation(true);
       let currentIndex = this.state.activeProjectIndex;
       let totalProjects = this.state.projects.length - 1;
@@ -91,7 +91,7 @@ export default class App extends Component {
         //If the user scrolled up, it goes to previous slide, otherwise - to next slide
         if (!this.state.projectsAreTransitioning) {
           window.setTransitioning(true);
-          if (delta > 0.5) {
+          if (delta > 0.6) {
             if (currentIndex < totalProjects) {
               this.setState(
                 {
@@ -102,7 +102,7 @@ export default class App extends Component {
                 }
               );
             }
-          } else if (delta < -0.5) {
+          } else if (delta < -0.6) {
             if (currentIndex > 0) {
               this.setState(
                 {
@@ -120,11 +120,11 @@ export default class App extends Component {
         }
       }
     }
-  }, 7);
+  }, 8);
 
   handleTouchStart = debounce(event => {
     ts = event.touches[0].clientY;
-  }, 7);
+  }, 8);
 
   handleTouchEnd = debounce(event => {
     if (!this.state.showDetail) {
@@ -142,7 +142,7 @@ export default class App extends Component {
       }
     }
     event.preventDefault();
-  }, 7);
+  }, 8);
 
   preloadImages = imgs => {
     let imgLoadedCount = 0;
