@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { gsap } from "gsap";
+import ContactOverlay from "./ContactOverlay";
 
 class NavigationOverlay extends Component {
   constructor(props) {
@@ -66,14 +67,10 @@ class NavigationOverlay extends Component {
         amount: 0.2
       },
       onComplete: () => {
-        this.setState(
-          {
-            isAnimating: false
-          },
-          () => {
-            this.props.navOverlayCallback();
-          }
-        );
+        this.setState({
+          isAnimating: false
+        });
+        this.props.navOverlayCallback("revealComplete");
       }
     });
 
@@ -140,13 +137,42 @@ class NavigationOverlay extends Component {
     const { projects } = this.props;
     return (
       <div id="navOverlay" className="navOverlay">
+        <div className="navOverlay__actions">
+          <div className="container -expanded">
+            <button
+              className="mainNavigation__hireMe -isButton"
+              onClick={() => {
+                this.setState(
+                  {
+                    isAnimating: true
+                  },
+                  () => {
+                    this.navOverlayLinkHideFromClick.seek(0).play();
+                  }
+                );
+              }}
+            >
+              <span>
+                <i className="far fa-times" />
+              </span>{" "}
+              Close
+            </button>
+          </div>
+        </div>
+        <ContactOverlay
+          contactOverlayAction={this.state.contactOverlayAction}
+          contactOverlayCallback={this.contactOverlayCallback}
+        />
         <div className="navOverlay__content">
           <h3 className="navOverlay__selectedWork">Selected Work</h3>
           <ul className="navOverlay__projectLinks">
             {projects.map((project, idx) => {
               if (project.id !== "home") {
                 return (
-                  <li key={"nav-" + idx} className="navOverlay__projectLink">
+                  <li
+                    key={"nav-" + idx}
+                    className="navOverlay__projectLink -animate"
+                  >
                     <button
                       className="mainNavigation__hireMe -isButton -isBlock"
                       onClick={() => {

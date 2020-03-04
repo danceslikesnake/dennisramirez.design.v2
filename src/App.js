@@ -39,7 +39,8 @@ export default class App extends Component {
       transitionDirection: "next",
       detailIsTransitioning: false,
       showDetail: false,
-      detailAction: "init"
+      detailAction: "init",
+      overlaysVisible: false
     };
 
     // check that fonts are loaded
@@ -78,7 +79,11 @@ export default class App extends Component {
   };
 
   handleScroll = debounce(event => {
-    if (!this.state.showDetail && !this.state.detailIsTransitioning) {
+    if (
+      !this.state.showDetail &&
+      !this.state.detailIsTransitioning &&
+      !this.state.overlaysVisible
+    ) {
       if (!window.animIsPaused) window.pauseLogoAnimation(true);
       let currentIndex = this.state.activeProjectIndex;
       let totalProjects = this.state.projects.length - 1;
@@ -127,7 +132,11 @@ export default class App extends Component {
   }, 8);
 
   handleTouchEnd = debounce(event => {
-    if (!this.state.showDetail) {
+    if (
+      !this.state.showDetail &&
+      !this.state.detailIsTransitioning &&
+      !this.state.overlaysVisible
+    ) {
       if (!this.state.projectsAreTransitioning) {
         let te = event.changedTouches[0].clientY;
         if (ts > te + 5) {
@@ -304,6 +313,12 @@ export default class App extends Component {
     }
   };
 
+  overlayCallback = bool => {
+    this.setState({
+      overlaysVisible: bool
+    });
+  };
+
   render() {
     const { projects, activeProjectIndex } = this.state;
     const activeProject = projects[activeProjectIndex];
@@ -336,6 +351,7 @@ export default class App extends Component {
           projects={projects}
           navGotoProject={this.navGotoProject}
           activeProjectIndex={activeProjectIndex}
+          overlayCallback={this.overlayCallback}
         />
         {!this.state.showDetail && (
           <Indicator

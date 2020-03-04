@@ -147,6 +147,13 @@
       }
     }
 
+    &.-noLeftMargin {
+      margin-left: 0;
+      @include media_queries($desktop) {
+        margin-left: 0;
+      }
+    }
+
     &.-isSocial {
       margin-right: 0;
       span {

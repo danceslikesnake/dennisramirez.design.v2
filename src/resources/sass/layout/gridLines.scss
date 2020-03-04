@@ -2,7 +2,7 @@
 
 .gridLines {
   @include positionFixed($top: 0, $bottom: 0);
-  @include set-z-index("sub-navigation");
+  @include set-z-index("modal-content");
   pointer-events: none;
   border-left: 1px solid rgba(white, 0.15);
   border-right: 1px solid rgba(white, 0.15);

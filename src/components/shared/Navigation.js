@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import NavigationOverlay from "./NavigationOverlay";
+import ContactOverlay from "./ContactOverlay";
 
 class Navigation extends Component {
   constructor(props) {
@@ -8,13 +9,21 @@ class Navigation extends Component {
 
     this.state = {
       showNavOverlay: false,
-      navOverlayAction: "init"
+      navOverlayAction: "init",
+      showContactOverlay: false,
+      contactOverlayAction: "init"
     };
   }
 
   navOverlayCallBack = action => {
     switch (action) {
+      case "revealComplete":
+        this.setState({
+          navOverlayAction: "init"
+        });
+        break;
       case "hideComplete":
+        this.props.overlayCallback(false);
         this.setState(
           {
             showNavOverlay: false,
@@ -26,6 +35,7 @@ class Navigation extends Component {
         );
         break;
       case "hideCompleteFromLink":
+        this.props.overlayCallback(false);
         this.setState({
           showNavOverlay: false,
           navOverlayAction: "init"
@@ -36,17 +46,61 @@ class Navigation extends Component {
     }
   };
 
-  manageOverlayState = () => {
-    if (this.state.showNavOverlay) {
-      this.setState({
-        navOverlayAction: "hide"
-      });
+  contactOverlayCallback = action => {
+    switch (action) {
+      case "revealComplete":
+        this.setState({
+          contactOverlayAction: "init"
+        });
+        break;
+      case "hideComplete":
+        this.props.overlayCallback(false);
+        this.setState(
+          {
+            showContactOverlay: false,
+            contactOverlayAction: "init"
+          },
+          () => {
+            window.pauseLogoAnimation(false);
+          }
+        );
+        break;
+      default:
+        break;
+    }
+  };
+
+  manageOverlayState = type => {
+    if (type === "nav") {
+      if (!this.state.showNavOverlay) {
+        window.pauseLogoAnimation(true);
+        this.setState(
+          {
+            showNavOverlay: true
+          },
+          () => {
+            this.props.overlayCallback(true);
+            this.setState({
+              navOverlayAction: "reveal"
+            });
+          }
+        );
+      }
     } else {
-      window.pauseLogoAnimation(true);
-      this.setState({
-        navOverlayAction: "reveal",
-        showNavOverlay: true
-      });
+      if (!this.state.showContactOverlay) {
+        window.pauseLogoAnimation(true);
+        this.setState(
+          {
+            showContactOverlay: true
+          },
+          () => {
+            this.props.overlayCallback(true);
+            this.setState({
+              contactOverlayAction: "reveal"
+            });
+          }
+        );
+      }
     }
   };
 
@@ -71,7 +125,7 @@ class Navigation extends Component {
                     <button
                       className="mainNavigation__hireMe -isButton"
                       onClick={() => {
-                        this.manageOverlayState();
+                        this.manageOverlayState("nav");
                       }}
                       onMouseEnter={() => {
                         window.pauseLogoAnimation(true);
@@ -130,32 +184,45 @@ class Navigation extends Component {
                   </a>
                 </div>
                 <div className="level-item">
-                  <a
-                    className="mainNavigation__hireMe"
-                    href="mailto:designexcathedra@gmail.com?subject=Hello, Dennis! I would like to hire you!"
-                    rel="noopener noreferrer"
-                    target="_blank"
+                  <button
+                    className="mainNavigation__hireMe -isButton"
+                    style={{ marginLeft: 0 }}
+                    onClick={() => {
+                      this.manageOverlayState("contact");
+                    }}
                     onMouseEnter={() => {
                       window.pauseLogoAnimation(true);
                     }}
                     onMouseLeave={() => {
-                      if (this.props.activeProjectIndex == 0)
+                      if (
+                        !this.state.showContactOverlay &&
+                        this.props.activeProjectIndex == 0
+                      ) {
                         window.pauseLogoAnimation(false);
+                      }
                     }}
                   >
                     Hire Me
-                  </a>
+                  </button>
                 </div>
               </li>
             </ul>
           </div>
         </nav>
-        <NavigationOverlay
-          projects={this.props.projects}
-          navOverlayAction={this.state.navOverlayAction}
-          navOverlayCallback={this.navOverlayCallBack}
-          navGotoProject={this.props.navGotoProject}
-        />
+        {this.state.showNavOverlay && (
+          <NavigationOverlay
+            projects={this.props.projects}
+            navOverlayAction={this.state.navOverlayAction}
+            navOverlayCallback={this.navOverlayCallBack}
+            navGotoProject={this.props.navGotoProject}
+          />
+        )}
+        {this.state.showContactOverlay && (
+          <ContactOverlay
+            contactOverlayAction={this.state.contactOverlayAction}
+            contactOverlayCallback={this.contactOverlayCallback}
+          />
+        )}
       </>
     );
   }
@@ -166,7 +233,8 @@ Navigation.propTypes = {
   hideDetail: PropTypes.func,
   projects: PropTypes.array,
   navGotoProject: PropTypes.func,
-  activeProjectIndex: PropTypes.number
+  activeProjectIndex: PropTypes.number,
+  overlayCallback: PropTypes.func
 };
 
 export default Navigation;
