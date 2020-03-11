@@ -62,7 +62,6 @@ export const punkgoes = {
       srcs: [
         {
           src: require("../../img/showcase/punkgoes/mobile-01.png"),
-          phoneMask: true,
           noBg: true,
           aspectRatio: 2.04,
           width: 500,
@@ -70,7 +69,6 @@ export const punkgoes = {
         },
         {
           src: require("../../img/showcase/punkgoes/mobile-02.png"),
-          phoneMask: true,
           noBg: true,
           aspectRatio: 2.04,
           width: 500,
@@ -78,7 +76,6 @@ export const punkgoes = {
         },
         {
           src: require("../../img/showcase/punkgoes/mobile-03.png"),
-          phoneMask: true,
           noBg: true,
           aspectRatio: 2.04,
           width: 500,
@@ -86,7 +83,6 @@ export const punkgoes = {
         },
         {
           src: require("../../img/showcase/punkgoes/mobile-04.png"),
-          phoneMask: true,
           noBg: true,
           aspectRatio: 2.04,
           width: 500,
@@ -94,7 +90,6 @@ export const punkgoes = {
         },
         {
           src: require("../../img/showcase/punkgoes/mobile-05.png"),
-          phoneMask: true,
           noBg: true,
           aspectRatio: 2.04,
           width: 500,
