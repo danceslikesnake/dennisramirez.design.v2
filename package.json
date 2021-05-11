@@ -32,7 +32,7 @@
     "eslint-plugin-react": "^7.16.0",
     "glob-all": "^3.1.0",
     "lint-staged": "^9.4.2",
-    "lodash": "^4.17.13",
+    "lodash": "^4.17.21",
     "node-sass": "^4.13.1",
     "path": "^0.12.7",
     "pre-commit": "^1.2.2",
